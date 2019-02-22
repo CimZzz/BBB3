@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="44dp"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<View
+		android:id="@+id/normalBg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintHorizontal_chainStyle="spread"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@+id/saleCountBg"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"/>
+	
+	<TextView
+		android:id="@+id/normalTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintLeft_toLeftOf="@+id/normalBg"
+		app:layout_constraintRight_toRightOf="@+id/normalBg"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:gravity="center"
+		android:textSize="@dimen/text_small"
+		android:textColor="@drawable/txt_filterbar"
+		android:text="综合"/>
+	
+	<View
+		android:id="@+id/normalLine"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_marginBottom="@dimen/margin_tiny"
+		app:layout_constraintLeft_toLeftOf="@+id/normalTxt"
+		app:layout_constraintRight_toRightOf="@id/normalTxt"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="#E51C23"/>
+	
+	<View
+		android:id="@+id/saleCountBg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toRightOf="@+id/normalBg"
+		app:layout_constraintRight_toLeftOf="@+id/discountBg"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"/>
+	
+	<TextView
+		android:id="@+id/saleCountTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toLeftOf="@+id/saleCountBg"
+		app:layout_constraintRight_toRightOf="@+id/saleCountBg"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:gravity="center"
+		android:textSize="@dimen/text_small"
+		android:textColor="@drawable/txt_filterbar"
+		android:text="销量"/>
+	
+	<View
+		android:id="@+id/saleCountLine"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_marginBottom="@dimen/margin_tiny"
+		app:layout_constraintLeft_toLeftOf="@+id/saleCountTxt"
+		app:layout_constraintRight_toRightOf="@id/saleCountTxt"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="#E51C23"/>
+	
+	
+	<View
+		android:id="@+id/discountBg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toRightOf="@+id/saleCountBg"
+		app:layout_constraintRight_toLeftOf="@+id/priceContainer"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"/>
+	
+	<TextView
+		android:id="@+id/discountTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toLeftOf="@+id/discountBg"
+		app:layout_constraintRight_toRightOf="@+id/discountBg"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:gravity="center"
+		android:textSize="@dimen/text_small"
+		android:textColor="@drawable/txt_filterbar"
+		android:text="省钱"/>
+	
+	<View
+		android:id="@+id/discountLine"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		android:layout_marginBottom="@dimen/margin_tiny"
+		app:layout_constraintLeft_toLeftOf="@+id/discountTxt"
+		app:layout_constraintRight_toRightOf="@id/discountTxt"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="#E51C23"/>
+	
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/priceContainer"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintLeft_toRightOf="@+id/discountBg"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent">
+		<TextView
+			android:id="@+id/priceTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@+id/priceIconImg"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:gravity="center"
+			android:textSize="@dimen/text_small"
+			android:textColor="@drawable/txt_filterbar"
+			android:text="价格"/>
+		
+		<View
+			android:id="@+id/priceIconImg"
+			android:layout_width="14dp"
+			android:layout_height="14dp"
+			android:layout_marginLeft="@dimen/margin_tiny"
+			app:layout_constraintLeft_toRightOf="@+id/priceTxt"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:background="@drawable/bg_default"/>
+		
+		
+		<View
+			android:id="@+id/priceLine"
+			android:layout_width="0dp"
+			android:layout_height="1dp"
+			android:layout_marginBottom="@dimen/margin_tiny"
+			app:layout_constraintLeft_toLeftOf="@+id/priceTxt"
+			app:layout_constraintRight_toRightOf="@+id/priceIconImg"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:background="#E51C23"/>
+	</android.support.constraint.ConstraintLayout>
+	
+	<View
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="@color/lightGreyColor"/>
+
+</android.support.constraint.ConstraintLayout>

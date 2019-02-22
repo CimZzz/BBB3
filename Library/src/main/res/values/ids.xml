@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="viewController" type="id"/>
+    <item name="span" type="id"/>
+    <item name="data" type="id"/>
+
+    <item name="loading" type="id"/>
+    <item name="over" type="id"/>
+    <item name="error" type="id"/>
+    <item name="content" type="id"/>
+
+    <item name="listHeader" type="id"/>
+    <item name="listContent" type="id"/>
+</resources>

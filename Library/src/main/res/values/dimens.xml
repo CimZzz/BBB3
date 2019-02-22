@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_normal">20dp</dimen>
+
+    <dimen name="margin_tiny">6dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+
+    <dimen name="gap_small">5dp</dimen>
+
+    <dimen name="icon_small">28dp</dimen>
+    <dimen name="icon_micro">13dp</dimen>
+
+
+    <dimen name="text_tiny">9sp</dimen>
+    <dimen name="text_micro">10sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_middle">16sp</dimen>
+    <dimen name="text_big">18sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_price">24sp</dimen>
+    <dimen name="text_bigPrice">28sp</dimen>
+
+    <dimen name="actionBarHeight">44dp</dimen>
+    <dimen name="filterBarTitleHeight">30dp</dimen>
+    <dimen name="actionBarIconSize">35dp</dimen>
+    <dimen name="actionBarItemHeight">35dp</dimen>
+</resources>

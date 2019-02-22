@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NoActionBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="NoActionBarPortraitStyle" parent="NoActionBarStyle">
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:configChanges">screenSize|keyboard|orientation</item>
+    </style>
+
+    <style name="NoTitleBarStyle" parent="NoActionBarStyle">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="InitStyle" parent="NoTitleBarStyle">
+        <item name="android:background">@drawable/img_launch</item>
+        <item name="android:windowBackground">@color/whiteColor</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">true</item>
+    </style>
+
+
+    <style name="DialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="TransparentStyle" parent="NoActionBarStyle">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+</resources>

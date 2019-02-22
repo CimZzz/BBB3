@@ -1,0 +1,83 @@
+ext {
+    version = 100
+    versionName = "1.00"
+
+    compile = 1
+    implementation = 2
+    api = 3
+    kapt = 4
+
+    androidDependenciesVersion = '27.1.1'
+
+    libraryDependenciesMap = [
+            [implementation, 'com.android.support.test:runner:1.0.2'],
+            [implementation, 'com.android.support:multidex:1.0.2'],
+            [api, 'com.github.ybq:Android-SpinKit:1.2.0'],
+            [api, 'com.android.support:appcompat-v7:' + androidDependenciesVersion],
+            [api, 'com.android.support:recyclerview-v7:' + androidDependenciesVersion],
+            [api, 'com.android.support:design:' + androidDependenciesVersion],
+
+            //fast json
+            [api, 'com.alibaba:fastjson:1.2.9'],
+            //ali trader
+            [implementation, 'com.alibaba.alipay:alipaySingle:20160825@jar'],
+
+            //登陆
+            [api, 'com.ali.auth.sdk:alibabauth_core:1.4.3@jar'],
+            [api, 'com.ali.auth.sdk:alibabauth_ui:1.4.3@aar'],
+            [api, 'com.ali.auth.sdk:alibabauth_ext:1.4.3@jar'],
+
+            //安全基础
+            [implementation, 'com.taobao.android:securityguardaar3:5.1.81@aar'],
+
+            //Mtop网关
+            [implementation, 'com.taobao.android:mtopsdk_allinone_open:1.2.2.4@jar'],
+
+            //applink
+            [implementation, 'com.alibaba.sdk.android:alibc_link_partner:1.1.0.6'],
+
+            //UT
+            [implementation, 'com.taobao.android:utdid4all:1.1.5.3_proguard@jar'],
+            [implementation, 'com.alibaba.mtl:app-monitor-sdk:2.5.1.3_for_bc_proguard@jar'],
+
+            //联盟SDK
+            [implementation, 'com.alimama.tunion.sdk:tuniontradesdk:0.3.2'],
+
+            //电商SDK
+            [api, 'com.alibaba.sdk.android:alibc_trade_common:3.1.1.206'],
+            [api, 'com.alibaba.sdk.android:alibc_trade_biz:3.1.1.206'],
+            [api, 'com.alibaba.sdk.android:alibc_trade_sdk:3.1.1.206'],
+
+            //wechat sdk
+            [api, 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'],
+            //zxing
+            [api, 'com.google.zxing:core:3.3.0'],
+
+            //Glide
+            [api, 'com.github.bumptech.glide:glide:4.8.0'],
+            [kapt, 'android.arch.lifecycle:compiler:1.1.1'],
+            [kapt, 'com.github.bumptech.glide:compiler:4.8.0'],
+
+            //OkHttp3
+            [api, 'com.squareup.okhttp3:okhttp:3.12.0'],
+
+            //轮播图
+            [api, 'com.bigkoo:ConvenientBanner:2.1.4'],
+
+            //CircleImageView
+            [api, 'de.hdodenhof:circleimageview:2.2.0'],
+
+            //仿IOS等待框
+            [implementation, 'com.bigkoo:svprogresshud:1.0.6'],
+
+            //仿IOS提示框
+            [implementation, 'com.bigkoo:alertview:1.0.3'],
+
+            //React-Native
+            [implementation, 'com.facebook.react:react-native:+']
+    ]
+
+    allDependenciesMap = [
+            [implementation, "com.android.support.constraint:constraint-layout:1.0.2"]
+    ]
+}

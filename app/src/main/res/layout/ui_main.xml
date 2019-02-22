@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:andr="http://schemas.android.com/tools">
+    
+    
+    <!--view pager-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/splitLine"
+        android:overScrollMode="never">
+
+    </android.support.v4.view.ViewPager>
+    
+    
+    
+    <View
+        android:id="@+id/splitLine"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        android:background="@color/lightGreyColor"/>
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="5dp"
+        andr:orientation="horizontal">
+        
+        <!--home-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bottomHomeContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+    
+            <ImageView
+                android:id="@+id/bottomHomeImg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="V,1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bottomHomeTxt"
+                android:src="@drawable/img_home_item"/>
+    
+            <TextView
+                android:id="@+id/bottomHomeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomHomeImg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="首页"
+                android:textSize="@dimen/text_small"
+                android:textColor="@drawable/txt_bottom_item"/>
+
+        </android.support.constraint.ConstraintLayout>
+        
+        <!--search-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bottomSearchContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+    
+            <ImageView
+                android:id="@+id/bottomSearchImg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="V,1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bottomSearchTxt"
+                android:src="@drawable/img_search_item"/>
+    
+            <TextView
+                android:id="@+id/bottomSearchTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomSearchImg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="搜索"
+                android:textSize="@dimen/text_small"
+                android:textColor="@drawable/txt_bottom_item"/>
+
+        </android.support.constraint.ConstraintLayout>
+        
+        <!--brand-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bottomCartContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+    
+            <ImageView
+                android:id="@+id/bottomCartImg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="V,1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bottomCartTxt"
+                android:src="@drawable/img_cart_item"/>
+    
+            <TextView
+                android:id="@+id/bottomCartTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomCartImg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="购物车"
+                android:textSize="@dimen/text_small"
+                android:textColor="@drawable/txt_bottom_item"/>
+
+        </android.support.constraint.ConstraintLayout>
+        
+        <!--brand-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/bottomMeContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+    
+            <ImageView
+                android:id="@+id/bottomMeImg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="V,1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bottomMeTxt"
+                android:src="@drawable/img_me_item"/>
+    
+            <TextView
+                android:id="@+id/bottomMeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomMeImg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="我的"
+                android:textSize="@dimen/text_small"
+                android:textColor="@drawable/txt_bottom_item"/>
+
+        </android.support.constraint.ConstraintLayout>
+    
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

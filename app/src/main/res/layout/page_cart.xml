@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<View
+		android:id="@+id/topGuide"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+	
+	
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/actionBarContainer"
+		android:layout_width="0dp"
+		android:layout_height="@dimen/actionBarHeight"
+		android:layout_marginLeft="@dimen/margin_small"
+		android:layout_marginRight="@dimen/margin_small"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/topGuide">
+		
+		<ImageView
+			android:id="@+id/backBtn"
+			android:layout_width="@dimen/actionBarIconSize"
+			android:layout_height="@dimen/actionBarIconSize"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:padding="10dp"
+			android:src="@drawable/icon_back_1"/>
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:text="购物车"
+			android:textSize="@dimen/text_middle"
+			android:textColor="@color/blackColor"/>
+		
+	
+	</android.support.constraint.ConstraintLayout>
+	
+	<View
+		android:id="@+id/splitLine"
+		android:layout_width="0dp"
+		android:layout_height="1dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/actionBarContainer"
+		android:background="@color/lightGreyColor"/>
+	
+	
+	<com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
+		android:id="@+id/viewHandler"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/splitLine"
+		app:layout_constraintBottom_toBottomOf="parent">
+		
+		<ViewStub
+			android:id="@+id/loading"
+			android:inflatedId="@id/loading"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout="@layout/view_loading"/>
+		
+		<ViewStub
+			android:id="@+id/error"
+			android:inflatedId="@id/error"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:layout="@layout/view_error"/>
+		
+		<WebView
+			android:id="@+id/content"
+			android:inflatedId="@id/content"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"/>
+		
+	</com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler>
+
+</android.support.constraint.ConstraintLayout>

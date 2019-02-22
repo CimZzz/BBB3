@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.gogoh5.apps.quanmaomao.library">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+            android:name=".environment.CustomApplication"
+            android:label="@string/app_name"
+            android:icon="@mipmap/icon_logo"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+
+
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+    
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.gogoh5.apps.quanmaomao.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    
+    
+        <activity android:name="com.gogoh5.apps.quanmaomao.android.wxapi.WXEntryActivity"
+                  android:theme="@style/TransparentStyle"
+                  android:exported="true"
+                  android:launchMode="singleTask">
+        </activity>
+        
+        
+        <activity android:name="com.ali.auth.third.ui.LoginActivity"
+                  android:screenOrientation="unspecified"
+                  tools:replace="android:screenOrientation">
+        </activity>
+    </application>
+</manifest>

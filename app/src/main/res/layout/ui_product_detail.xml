@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/viewHandler">
+	
+	<ViewStub
+		android:id="@+id/loading"
+		android:inflatedId="@id/loading"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout="@layout/view_loading"/>
+	
+	<ViewStub
+		android:id="@+id/error"
+		android:inflatedId="@id/error"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout="@layout/view_error"/>
+	
+	<ViewStub
+		android:id="@+id/content"
+		android:inflatedId="@id/content"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:layout="@layout/sub_product_detail_content"/>
+	
+	<ImageView
+		android:id="@+id/backBtn"
+		android:layout_width="35dp"
+		android:layout_height="35dp"
+		android:tag="No"
+		android:layout_marginLeft="@dimen/margin_small"
+		android:layout_marginStart="@dimen/margin_small"
+		android:layout_marginTop="@dimen/margin_small"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/topGuide"
+		android:src="@drawable/icon_back_2"/>
+	
+	
+	<View
+		android:id="@+id/topGuide"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:tag="No"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+</com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler>

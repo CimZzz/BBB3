@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<android.support.v4.widget.SwipeRefreshLayout
+		android:id="@+id/refreshView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="@color/lightGreyColor">
+		
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:overScrollMode="never"
+			android:scrollbars="none">
+			
+			<android.support.constraint.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				
+				<View
+					android:id="@+id/topBg"
+					android:layout_width="match_parent"
+					android:layout_height="158dp"
+					app:layout_constraintTop_toTopOf="parent"
+					android:background="#FF4081"/>
+				
+				<android.support.constraint.Guideline
+					android:id="@+id/leftGuide"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					app:layout_constraintGuide_begin="@dimen/margin_small"/>
+				
+				<android.support.constraint.Guideline
+					android:id="@+id/rightGuide"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					app:layout_constraintGuide_end="@dimen/margin_small"/>
+				
+				<de.hdodenhof.circleimageview.CircleImageView
+					android:id="@+id/avatarImg"
+					android:layout_width="58dp"
+					android:layout_height="58dp"
+					android:layout_marginTop="20dp"
+					app:layout_constraintLeft_toLeftOf="@+id/leftGuide"
+					app:layout_constraintTop_toTopOf="parent"/>
+				
+				<TextView
+					android:id="@+id/nickNameTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="@dimen/margin_small"
+					android:layout_marginStart="@dimen/margin_small"
+					app:layout_constraintLeft_toRightOf="@+id/avatarImg"
+					app:layout_constraintRight_toRightOf="@id/rightGuide"
+					app:layout_constraintTop_toTopOf="@+id/avatarImg"
+					android:maxLines="1"
+					android:ellipsize="end"
+					android:text="---"
+					android:textSize="@dimen/text_big"
+					android:textColor="@color/whiteColor"/>
+				
+				<TextView
+					android:id="@+id/idTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="@dimen/margin_small"
+					android:layout_marginStart="@dimen/margin_small"
+					app:layout_constraintLeft_toRightOf="@+id/avatarImg"
+					app:layout_constraintRight_toRightOf="@id/rightGuide"
+					app:layout_constraintBottom_toBottomOf="@+id/avatarImg"
+					android:maxLines="1"
+					android:ellipsize="end"
+					android:text="ID:---"
+					android:textSize="@dimen/text_normal"
+					android:textColor="@color/whiteColor"/>
+				
+				<ImageView
+					android:id="@+id/settingBtn"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
+					app:layout_constraintRight_toRightOf="@id/rightGuide"
+					app:layout_constraintTop_toTopOf="@+id/avatarImg"
+					app:layout_constraintBottom_toBottomOf="@+id/avatarImg"
+					android:padding="5dp"
+					android:src="@drawable/icon_me_setting"/>
+				
+				<!--my info-->
+				<android.support.constraint.ConstraintLayout
+					android:id="@+id/myInfoContainer"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="34dp"
+					app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+					app:layout_constraintRight_toRightOf="@id/rightGuide"
+					app:layout_constraintTop_toBottomOf="@+id/avatarImg"
+					android:paddingLeft="@dimen/margin_normal"
+					android:paddingRight="@dimen/margin_normal"
+					android:paddingTop="@dimen/margin_small"
+					android:paddingBottom="@dimen/margin_small"
+					android:background="@drawable/bg_white_round_5dp">
+					
+					<ImageView
+						android:id="@+id/myInfoIconImg"
+						android:layout_width="@dimen/icon_small"
+						android:layout_height="@dimen/icon_small"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						android:src="@drawable/icon_me_income"/>
+					
+					<TextView
+						android:id="@+id/myInfoTitleTxt"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="@dimen/margin_small"
+						android:layout_marginStart="@dimen/margin_small"
+						app:layout_constraintLeft_toRightOf="@+id/myInfoIconImg"
+						app:layout_constraintTop_toTopOf="@id/myInfoIconImg"
+						app:layout_constraintBottom_toBottomOf="@id/myInfoIconImg"
+						android:textSize="@dimen/text_middle"
+						android:text="我的资产"
+						android:textColor="@color/blackColor"/>
+					
+					<!--total settlement-->
+					<android.support.constraint.ConstraintLayout
+						android:id="@+id/totalSettleContainer"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="30dp"
+						app:layout_constraintHorizontal_weight="1"
+						app:layout_constraintHorizontal_chainStyle="spread"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintRight_toLeftOf="@+id/profitContainer"
+						app:layout_constraintTop_toBottomOf="@+id/myInfoIconImg">
+						
+						<TextView
+							android:id="@+id/totalSettleTitleTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintBottom_toTopOf="@+id/totalSettleTxt"
+							android:textSize="@dimen/text_small"
+							android:textColor="@color/greyColor"
+							android:text="累计收入"/>
+						
+						<TextView
+							android:id="@+id/totalSettleTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/totalSettleTitleTxt"
+							app:layout_constraintBottom_toBottomOf="parent"
+							android:text="---"
+							android:textColor="@color/blackColor"
+							android:textSize="@dimen/text_middle"/>
+					
+					</android.support.constraint.ConstraintLayout>
+					
+					<!--profit-->
+					<android.support.constraint.ConstraintLayout
+						android:id="@+id/profitContainer"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="30dp"
+						app:layout_constraintHorizontal_weight="1"
+						app:layout_constraintLeft_toRightOf="@id/totalSettleContainer"
+						app:layout_constraintRight_toLeftOf="@+id/balanceContainer"
+						app:layout_constraintTop_toBottomOf="@+id/myInfoIconImg">
+						
+						<TextView
+							android:id="@+id/profitTitleTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintBottom_toTopOf="@+id/profitTxt"
+							android:textSize="@dimen/text_small"
+							android:textColor="@color/greyColor"
+							android:text="等待结算"/>
+						
+						<TextView
+							android:id="@+id/profitTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/profitTitleTxt"
+							app:layout_constraintBottom_toBottomOf="parent"
+							android:text="---"
+							android:textColor="@color/blackColor"
+							android:textSize="@dimen/text_middle"/>
+					
+					</android.support.constraint.ConstraintLayout>
+					
+					<!--balance-->
+					<android.support.constraint.ConstraintLayout
+						android:id="@+id/balanceContainer"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="30dp"
+						app:layout_constraintHorizontal_weight="1"
+						app:layout_constraintLeft_toRightOf="@+id/profitContainer"
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/myInfoIconImg">
+						
+						<TextView
+							android:id="@+id/balanceTitleTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintBottom_toTopOf="@+id/balanceTxt"
+							android:textSize="@dimen/text_small"
+							android:textColor="@color/greyColor"
+							android:text="可提现"/>
+						
+						<TextView
+							android:id="@+id/balanceTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/margin_tiny"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintRight_toRightOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/balanceTitleTxt"
+							app:layout_constraintBottom_toBottomOf="parent"
+							android:text="---"
+							android:textColor="@color/blackColor"
+							android:textSize="@dimen/text_middle"/>
+					
+					</android.support.constraint.ConstraintLayout>
+				
+				</android.support.constraint.ConstraintLayout>
+				
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/margin_normal"
+					app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+					app:layout_constraintRight_toRightOf="@id/rightGuide"
+					app:layout_constraintTop_toBottomOf="@+id/myInfoContainer"
+					android:paddingLeft="@dimen/margin_normal"
+					android:paddingRight="@dimen/margin_normal"
+					android:paddingTop="@dimen/margin_small"
+					android:paddingBottom="@dimen/margin_small"
+					android:background="@drawable/bg_white_round_5dp"
+					android:orientation="vertical">
+					
+					<!--reward-->
+					<LinearLayout
+						android:id="@+id/rewardContainer"
+						android:layout_width="match_parent"
+						android:layout_height="47dp"
+						android:gravity="center_vertical"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/icon_me_reward"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:layout_marginLeft="@dimen/margin_tiny"
+							android:layout_marginStart="@dimen/margin_tiny"
+							android:layout_marginRight="@dimen/margin_tiny"
+							android:layout_marginEnd="@dimen/margin_tiny"
+							android:text="我的返利"
+							android:textSize="@dimen/text_middle"
+							android:textColor="@color/blackColor"/>
+						
+						<ImageView
+							android:layout_width="15dp"
+							android:layout_height="15dp"
+							android:src="@drawable/icon_more_1"/>
+					
+					</LinearLayout>
+					
+					<!--split line-->
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/lightGreyColor"/>
+					
+					<!--order-->
+					<LinearLayout
+						android:id="@+id/orderContainer"
+						android:layout_width="match_parent"
+						android:layout_height="47dp"
+						android:gravity="center_vertical"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/icon_me_order"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:layout_marginLeft="@dimen/margin_tiny"
+							android:layout_marginStart="@dimen/margin_tiny"
+							android:layout_marginRight="@dimen/margin_tiny"
+							android:layout_marginEnd="@dimen/margin_tiny"
+							android:text="我的订单"
+							android:textSize="@dimen/text_middle"
+							android:textColor="@color/blackColor"/>
+						
+						<ImageView
+							android:layout_width="15dp"
+							android:layout_height="15dp"
+							android:src="@drawable/icon_more_1"/>
+					
+					</LinearLayout>
+					
+					<!--split line-->
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:visibility="gone"
+						android:background="@color/lightGreyColor"/>
+					
+					<!--order-->
+					<LinearLayout
+						android:id="@+id/cartContainer"
+						android:layout_width="match_parent"
+						android:layout_height="47dp"
+						android:gravity="center_vertical"
+						android:orientation="horizontal"
+						android:visibility="gone">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:background="@drawable/bg_default"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:layout_marginLeft="@dimen/margin_tiny"
+							android:layout_marginStart="@dimen/margin_tiny"
+							android:layout_marginRight="@dimen/margin_tiny"
+							android:layout_marginEnd="@dimen/margin_tiny"
+							android:text="购物车"
+							android:textSize="@dimen/text_middle"
+							android:textColor="@color/blackColor"/>
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:background="@drawable/bg_default"/>
+					
+					</LinearLayout>
+					
+					<!--split line-->
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/lightGreyColor"/>
+					
+					<!--ali auth-->
+					<LinearLayout
+						android:id="@+id/aliAuthContainer"
+						android:layout_width="match_parent"
+						android:layout_height="47dp"
+						android:gravity="center_vertical"
+						android:orientation="horizontal">
+						
+						<ImageView
+							android:layout_width="20dp"
+							android:layout_height="20dp"
+							android:src="@drawable/icon_auth"/>
+						
+						<TextView
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:layout_marginLeft="@dimen/margin_tiny"
+							android:layout_marginStart="@dimen/margin_tiny"
+							android:layout_marginRight="@dimen/margin_tiny"
+							android:layout_marginEnd="@dimen/margin_tiny"
+							android:text="淘宝授权"
+							android:textSize="@dimen/text_middle"
+							android:textColor="@color/blackColor"/>
+						
+						<TextView
+							android:id="@+id/aliAuthStatusTxt"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginRight="@dimen/margin_tiny"
+							android:layout_marginEnd="@dimen/margin_tiny"
+							android:text="已授权"
+							android:textSize="@dimen/text_small"
+							android:textColor="@color/redColor"/>
+						
+						<ImageView
+							android:layout_width="15dp"
+							android:layout_height="15dp"
+							android:src="@drawable/icon_more_1"/>
+					
+					</LinearLayout>
+					
+					
+				</LinearLayout>
+				
+			
+			</android.support.constraint.ConstraintLayout>
+		</ScrollView>
+		
+		
+	</android.support.v4.widget.SwipeRefreshLayout>
+	
+	
+</android.support.constraint.ConstraintLayout>

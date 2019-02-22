@@ -1,0 +1,5 @@
+android {
+    defaultConfig {
+        applicationId "com.gogoh5.apps.quanmaomao.android"
+    }
+}

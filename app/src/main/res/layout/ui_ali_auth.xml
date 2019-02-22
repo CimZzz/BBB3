@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="300dp"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<android.support.constraint.Guideline
+		android:id="@+id/topGuide"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.7"/>
+	
+	<android.support.constraint.Guideline
+		android:id="@+id/bottomGuide"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.85"/>
+	
+	<ImageView
+		android:id="@+id/bg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintDimensionRatio="H,504:588"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		android:src="@drawable/img_ali_auth"/>
+	
+	
+	<TextView
+		android:id="@+id/protocolBtn"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintLeft_toLeftOf="@+id/cancelBtn"
+		app:layout_constraintTop_toBottomOf="@+id/topGuide"
+		app:layout_constraintBottom_toTopOf="@+id/bottomGuide"
+		android:text="阅读《券猫猫用户协议》"
+		android:textSize="@dimen/text_normal"
+		android:textColor="@color/blueColor"/>
+	
+	<ImageView
+		android:id="@+id/cancelBtn"
+		android:layout_width="0dp"
+		android:layout_height="32dp"
+		app:layout_constraintDimensionRatio="V,142:55"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@+id/middleGuide"
+		app:layout_constraintTop_toTopOf="@id/bottomGuide"
+		android:src="@drawable/img_cancel_btn"/>
+	
+	<View
+		android:id="@+id/middleGuide"
+		android:layout_width="5dp"
+		android:layout_height="1dp"
+		app:layout_constraintLeft_toRightOf="@+id/cancelBtn"
+		app:layout_constraintRight_toLeftOf="@+id/agreeBtn"
+		app:layout_constraintTop_toTopOf="@id/bottomGuide"/>
+	
+	
+	<ImageView
+		android:id="@+id/agreeBtn"
+		android:layout_width="0dp"
+		android:layout_height="32dp"
+		app:layout_constraintDimensionRatio="V,292:55"
+		app:layout_constraintLeft_toRightOf="@+id/middleGuide"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="@id/bottomGuide"
+		android:src="@drawable/img_agree_btn"/>
+	
+	
+</android.support.constraint.ConstraintLayout>

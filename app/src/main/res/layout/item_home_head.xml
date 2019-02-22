@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="210dp"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:background="#FF4081">
+	
+	<ImageView
+		android:id="@+id/iconImg"
+		android:layout_width="63dp"
+		android:layout_height="63dp"
+		android:layout_marginTop="@dimen/margin_normal"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		android:src="@drawable/icon_logo_grey"/>
+	
+	<TextView
+		android:id="@+id/tipsTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/iconImg"
+		android:text="网购优惠券搜索工具"
+		android:textSize="@dimen/text_small"
+		android:textColor="@color/whiteColor"/>
+	
+	<View
+		android:id="@+id/searchBarBg"
+		android:layout_width="0dp"
+		android:layout_height="36dp"
+		android:layout_marginLeft="30dp"
+		android:layout_marginRight="30dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toTopOf="@+id/helpImg"
+		android:background="@drawable/bg_white_round_5dp"/>
+	
+	<ImageView
+		android:id="@+id/searchIconImg"
+		android:layout_width="25dp"
+		android:layout_height="25dp"
+		android:layout_marginLeft="5dp"
+		android:layout_marginStart="5dp"
+		app:layout_constraintLeft_toLeftOf="@+id/searchBarBg"
+		app:layout_constraintTop_toTopOf="@+id/searchBarBg"
+		app:layout_constraintBottom_toBottomOf="@+id/searchBarBg"
+		android:src="@drawable/icon_search_1"/>
+	
+	<TextView
+		android:id="@+id/searchContentTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dp"
+		android:layout_marginStart="5dp"
+		app:layout_constraintLeft_toRightOf="@+id/searchIconImg"
+		app:layout_constraintTop_toTopOf="@+id/searchBarBg"
+		app:layout_constraintBottom_toBottomOf="@+id/searchBarBg"
+		android:text="请输入关键词"
+		android:textColor="@color/greyColor"
+		android:textSize="@dimen/text_small"/>
+	
+	<ImageView
+		android:id="@+id/helpImg"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintDimensionRatio="H,750:88"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:src="@drawable/img_procedure"/>
+	
+</android.support.constraint.ConstraintLayout>

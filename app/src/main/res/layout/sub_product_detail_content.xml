@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/whiteColor"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<com.gogoh5.apps.quanmaomao.library.widgets.ScrollView
+		android:id="@+id/scrollView"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+		android:scrollbars="none"
+		android:overScrollMode="never">
+		
+		<android.support.constraint.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<android.support.constraint.Guideline
+				android:id="@+id/leftGuide"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintGuide_begin="@dimen/margin_small"/>
+			
+			<android.support.constraint.Guideline
+				android:id="@+id/rightGuide"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				app:layout_constraintGuide_end="@dimen/margin_small"/>
+			
+			<com.bigkoo.convenientbanner.ConvenientBanner
+				android:id="@+id/bannerView"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				app:layout_constraintDimensionRatio="H,1:1"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"/>
+			
+			<TextView
+				android:id="@+id/bannerCountTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="@dimen/margin_small"
+				android:layout_marginEnd="@dimen/margin_small"
+				android:layout_marginBottom="@dimen/margin_small"
+				app:layout_constraintRight_toRightOf="@id/bannerView"
+				app:layout_constraintBottom_toBottomOf="@id/bannerView"
+				android:paddingLeft="@dimen/margin_small"
+				android:paddingRight="@dimen/margin_small"
+				android:paddingTop="1.5dp"
+				android:paddingBottom="1.5dp"
+				android:text="--/--"
+				android:textColor="#CDFFFFFF"
+				android:textSize="@dimen/text_tiny"
+				android:background="@drawable/bg_banner_count"/>
+			
+			
+			<TextView
+				android:id="@+id/brandTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_small"
+				android:layout_marginRight="@dimen/margin_small"
+				android:layout_marginEnd="@dimen/margin_small"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintRight_toLeftOf="@+id/titleTxt"
+				app:layout_constraintTop_toBottomOf="@+id/bannerView"
+				android:paddingLeft="3dp"
+				android:paddingRight="3dp"
+				android:paddingTop="1dp"
+				android:paddingBottom="1dp"
+				android:text="--"
+				android:textSize="@dimen/text_small"/>
+			
+			<TextView
+				android:id="@+id/titleTxt"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintLeft_toRightOf="@+id/brandTxt"
+				app:layout_constraintRight_toRightOf="@id/rightGuide"
+				app:layout_constraintTop_toTopOf="@id/brandTxt"
+				android:maxLines="1"
+				android:ellipsize="end"
+				android:text="--"
+				android:textSize="@dimen/text_normal"
+				android:textColor="@color/blackColor"/>
+			
+			<TextView
+				android:id="@+id/orgPriceTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_tiny"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintTop_toBottomOf="@+id/titleTxt"
+				android:text="--"
+				android:textSize="@dimen/text_normal"
+				android:textColor="@color/greyColor"/>
+			
+			<TextView
+				android:id="@+id/saleCountTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintRight_toRightOf="@id/rightGuide"
+				app:layout_constraintBaseline_toBaselineOf="@+id/orgPriceTxt"
+				android:text="已抢--件"
+				android:textSize="@dimen/text_small"
+				android:textColor="@color/greyColor"/>
+			
+			
+			
+			<TextView
+				android:id="@+id/priceTipsTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintBaseline_toBaselineOf="@+id/priceTxt"
+				android:text="返后¥"
+				android:textColor="@color/redColor"
+				android:textSize="@dimen/text_small"/>
+			
+			<TextView
+				android:id="@+id/priceTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_tiny"
+				app:layout_constraintLeft_toRightOf="@+id/priceTipsTxt"
+				app:layout_constraintTop_toBottomOf="@+id/orgPriceTxt"
+				android:text="--"
+				android:textColor="@color/redColor"
+				android:textSize="@dimen/text_small"/>
+			
+			<TextView
+				android:id="@+id/rewardTipsTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/margin_tiny"
+				android:layout_marginStart="@dimen/margin_tiny"
+				app:layout_constraintLeft_toRightOf="@+id/priceTxt"
+				app:layout_constraintBaseline_toBaselineOf="@+id/priceTxt"
+				android:text="下单后"
+				android:textColor="@color/greyColor"
+				android:textSize="@dimen/text_small"/>
+			
+			<TextView
+				android:id="@+id/rewardTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/margin_tiny"
+				android:layout_marginStart="@dimen/margin_tiny"
+				app:layout_constraintLeft_toRightOf="@+id/rewardTipsTxt"
+				app:layout_constraintBaseline_toBaselineOf="@+id/priceTxt"
+				android:paddingLeft="3dp"
+				android:paddingRight="3dp"
+				android:paddingTop="1.5dp"
+				android:paddingBottom="1.5dp"
+				android:maxLines="1"
+				android:ellipsize="end"
+				android:text="返--"
+				android:textSize="@dimen/text_small"
+				android:textColor="@color/redColor"
+				android:background="@drawable/bg_reward"/>
+			
+			
+			<ImageView
+				android:id="@+id/rewardHelpBtn"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginLeft="@dimen/margin_tiny"
+				android:layout_marginStart="@dimen/margin_tiny"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintLeft_toRightOf="@+id/rewardTxt"
+				app:layout_constraintTop_toTopOf="@+id/rewardTxt"
+				app:layout_constraintBottom_toBottomOf="@+id/rewardTxt"
+				android:src="@drawable/icon_help"/>
+			
+			
+			<android.support.constraint.ConstraintLayout
+				android:id="@+id/couponContainer"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginTop="@dimen/margin_small"
+				app:layout_constraintDimensionRatio="330:84"
+				app:layout_constraintTop_toBottomOf="@+id/priceTxt"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintRight_toRightOf="@id/rightGuide">
+				
+				<ImageView
+					android:id="@+id/couponBg"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					android:src="@drawable/img_coupon_2"/>
+				
+				
+				<android.support.constraint.ConstraintLayout
+					android:id="@+id/couponInfoContainer"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintHorizontal_weight="2"
+					app:layout_constraintLeft_toLeftOf="@+id/couponBg"
+					app:layout_constraintRight_toLeftOf="@+id/couponBtn"
+					app:layout_constraintTop_toTopOf="@id/couponBg"
+					app:layout_constraintBottom_toBottomOf="@id/couponBg">
+					
+					<TextView
+						android:id="@+id/couponPriceTxt"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						android:text="--元优惠券"
+						android:textColor="@color/whiteColor"
+						android:textSize="@dimen/text_middle"/>
+					
+					<TextView
+						android:id="@+id/couponTimeTxt"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/margin_tiny"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/couponPriceTxt"
+						app:layout_constraintBottom_toBottomOf="parent"
+						android:gravity="center"
+						android:maxLines="1"
+						android:ellipsize="end"
+						android:text="使用期限：--.--.-- - --.--.--"
+						android:textColor="@color/whiteColor"
+						android:textSize="@dimen/text_tiny"/>
+				
+				
+				</android.support.constraint.ConstraintLayout>
+				
+				<TextView
+					android:id="@+id/couponBtn"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toRightOf="@+id/couponInfoContainer"
+					app:layout_constraintRight_toRightOf="@id/couponBg"
+					app:layout_constraintTop_toTopOf="@id/couponBg"
+					app:layout_constraintBottom_toBottomOf="@id/couponBg"
+					android:gravity="center"
+					android:text="立即领取"
+					android:textSize="@dimen/text_normal"
+					android:textColor="@color/whiteColor"/>
+				
+			</android.support.constraint.ConstraintLayout>
+			
+
+			<View
+				android:id="@+id/shopSplitLine"
+				android:layout_width="0dp"
+				android:layout_height="@dimen/margin_small"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/couponContainer"
+				android:background="@color/lightGreyColor"/>
+			
+			<android.support.constraint.ConstraintLayout
+				android:id="@+id/shopContainer"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintRight_toRightOf="@id/rightGuide"
+				app:layout_constraintTop_toBottomOf="@+id/shopSplitLine"
+				android:paddingTop="@dimen/margin_small"
+				android:paddingBottom="@dimen/margin_small">
+				
+				<ImageView
+					android:id="@+id/shopIconImg"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_marginRight="@dimen/margin_small"
+					android:layout_marginEnd="@dimen/margin_small"
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintTop_toTopOf="@+id/shopTitleTxt"
+					app:layout_constraintBottom_toBottomOf="@+id/shopTitleTxt"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@+id/shopTitleTxt"/>
+				
+				<TextView
+					android:id="@+id/shopTitleTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintLeft_toRightOf="@+id/shopIconImg"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					android:maxLines="1"
+					android:ellipsize="end"
+					android:text="--"
+					android:textSize="@dimen/text_middle"
+					android:textColor="@color/blackColor"/>
+				
+				<TextView
+					android:id="@+id/goodDescScoreTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/margin_normal"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintHorizontal_chainStyle="spread"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@+id/sellerScoreTxt"
+					app:layout_constraintTop_toBottomOf="@+id/shopTitleTxt"
+					android:gravity="start"
+					android:text="宝贝描述:--"
+					android:textColor="@color/greyColor"
+					android:textSize="@dimen/text_small"/>
+				
+				<TextView
+					android:id="@+id/sellerScoreTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toRightOf="@+id/goodDescScoreTxt"
+					app:layout_constraintRight_toLeftOf="@+id/postScoreTxt"
+					app:layout_constraintBaseline_toBaselineOf="@+id/goodDescScoreTxt"
+					android:gravity="start"
+					android:text="卖家服务:--"
+					android:textColor="@color/greyColor"
+					android:textSize="@dimen/text_small"/>
+				
+				<TextView
+					android:id="@+id/postScoreTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toRightOf="@+id/sellerScoreTxt"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintBaseline_toBaselineOf="@+id/goodDescScoreTxt"
+					android:gravity="start"
+					android:text="物流服务:--"
+					android:textColor="@color/greyColor"
+					android:textSize="@dimen/text_small"/>
+				
+			</android.support.constraint.ConstraintLayout>
+			
+			
+			
+			<View
+				android:id="@+id/detailSplitLine"
+				android:layout_width="0dp"
+				android:layout_height="@dimen/margin_small"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/shopContainer"
+				android:background="@color/lightGreyColor"/>
+			
+			
+			<TextView
+				android:id="@+id/detailTitleTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				app:layout_constraintLeft_toLeftOf="@id/leftGuide"
+				app:layout_constraintRight_toRightOf="@+id/rightGuide"
+				app:layout_constraintTop_toBottomOf="@+id/detailSplitLine"
+				android:gravity="center"
+				android:text="详情"
+				android:textColor="@color/blackColor"
+				android:textSize="@dimen/text_normal"
+				android:textStyle="bold"/>
+			
+			<LinearLayout
+				android:id="@+id/detailContainer"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/detailTitleTxt"
+				android:orientation="vertical"/>
+			
+			
+			<android.support.constraint.ConstraintLayout
+				android:id="@+id/endContainer"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/margin_tiny"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/detailContainer">
+				
+				<View
+					android:id="@+id/endLeft"
+					android:layout_width="0dp"
+					android:layout_height="1dp"
+					app:layout_constraintHorizontal_chainStyle="spread"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@+id/endTxt"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					android:background="@color/lightGreyColor"/>
+				
+				<View
+					android:id="@+id/endRight"
+					android:layout_width="0dp"
+					android:layout_height="1dp"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintLeft_toRightOf="@+id/endTxt"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					android:background="@color/lightGreyColor"/>
+				
+				<TextView
+					android:id="@+id/endTxt"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintLeft_toRightOf="@+id/endLeft"
+					app:layout_constraintRight_toLeftOf="@+id/endRight"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintBottom_toBottomOf="parent"
+					android:gravity="center"
+					android:text="已经到底啦"
+					android:textSize="14sp"
+					android:textColor="@color/greyColor"/>
+			
+			</android.support.constraint.ConstraintLayout>
+		
+		</android.support.constraint.ConstraintLayout>
+		
+	</com.gogoh5.apps.quanmaomao.library.widgets.ScrollView>
+
+	
+	<View
+		android:layout_width="0dp"
+		android:layout_height="0.5dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+		android:background="@color/lightGreyColor"/>
+	
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/bottomBar"
+		android:layout_width="0dp"
+		android:layout_height="44dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent">
+		
+		<android.support.constraint.Guideline
+			android:id="@+id/middleGuide"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_percent="0.55"/>
+		
+		<View
+			android:id="@+id/homeBg"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintHorizontal_chainStyle="spread"
+			app:layout_constraintHorizontal_weight="0.1765"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@+id/cartBg"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"/>
+		
+		<ImageView
+			android:id="@+id/homeIconImg"
+			android:layout_width="18dp"
+			android:layout_height="18dp"
+			app:layout_constraintLeft_toLeftOf="@+id/homeBg"
+			app:layout_constraintRight_toRightOf="@+id/homeBg"
+			app:layout_constraintTop_toTopOf="@id/homeBg"
+			app:layout_constraintBottom_toBottomOf="@+id/middleGuide"
+			android:src="@drawable/icon_main_home_unselect"/>
+		
+		<TextView
+			android:id="@+id/homeTipsTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="@+id/homeBg"
+			app:layout_constraintRight_toRightOf="@+id/homeBg"
+			app:layout_constraintTop_toTopOf="@id/middleGuide"
+			android:text="首页"
+			android:textColor="@color/greyColor"
+			android:textSize="@dimen/text_small"/>
+		
+		
+		<View
+			android:id="@+id/cartBg"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:visibility="gone"
+			app:layout_constraintHorizontal_weight="0.1765"
+			app:layout_constraintLeft_toRightOf="@+id/homeBg"
+			app:layout_constraintRight_toLeftOf="@+id/botOrgPriceBg"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"/>
+		
+		<ImageView
+			android:id="@+id/cartIconImg"
+			android:layout_width="18dp"
+			android:layout_height="18dp"
+			android:visibility="gone"
+			app:layout_constraintLeft_toLeftOf="@+id/cartBg"
+			app:layout_constraintRight_toRightOf="@+id/cartBg"
+			app:layout_constraintTop_toTopOf="@id/cartBg"
+			app:layout_constraintBottom_toBottomOf="@+id/middleGuide"
+			android:src="@drawable/bg_default"/>
+		
+		<TextView
+			android:id="@+id/cartTipsTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:visibility="gone"
+			app:layout_constraintLeft_toLeftOf="@+id/cartBg"
+			app:layout_constraintRight_toRightOf="@+id/cartBg"
+			app:layout_constraintTop_toTopOf="@id/middleGuide"
+			android:text="购物车"
+			android:textColor="@color/greyColor"
+			android:textSize="@dimen/text_small"/>
+		
+		<View
+			android:id="@+id/botOrgPriceBg"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintHorizontal_weight="0.26667"
+			app:layout_constraintLeft_toRightOf="@+id/cartBg"
+			app:layout_constraintRight_toLeftOf="@+id/buyBg"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:background="#FE978E"/>
+		
+		<TextView
+			android:id="@+id/botOrgPriceTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="@+id/botOrgPriceBg"
+			app:layout_constraintRight_toRightOf="@+id/botOrgPriceBg"
+			app:layout_constraintBottom_toBottomOf="@id/middleGuide"
+			android:text="--"
+			android:textColor="@color/whiteColor"
+			android:textSize="@dimen/text_normal"/>
+		
+		
+		<TextView
+			android:id="@+id/botOrgPriceTipsTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="@+id/botOrgPriceBg"
+			app:layout_constraintRight_toRightOf="@+id/botOrgPriceBg"
+			app:layout_constraintTop_toTopOf="@id/middleGuide"
+			android:text="不领券"
+			android:textColor="@color/whiteColor"
+			android:textSize="@dimen/text_small"/>
+		
+		<View
+			android:id="@+id/buyBg"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintHorizontal_weight="0.38"
+			app:layout_constraintLeft_toRightOf="@+id/botOrgPriceBg"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:background="@color/redColor"/>
+		
+		<TextView
+			android:id="@+id/buyTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="@+id/buyBg"
+			app:layout_constraintRight_toRightOf="@+id/buyBg"
+			app:layout_constraintBottom_toBottomOf="@id/middleGuide"
+			android:text="--"
+			android:textColor="@color/whiteColor"
+			android:textSize="@dimen/text_normal"/>
+		
+		
+		<TextView
+			android:id="@+id/buyTipsTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="@+id/buyBg"
+			app:layout_constraintRight_toRightOf="@+id/buyBg"
+			app:layout_constraintTop_toTopOf="@id/middleGuide"
+			android:text="领券购买"
+			android:textColor="@color/whiteColor"
+			android:textSize="@dimen/text_small"/>
+		
+	</android.support.constraint.ConstraintLayout>
+	
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="priceSign">¥</string>
+    <string name="list_page_content_behavior">com.gogoh5.apps.quanmaomao.library.extended.listview.ListPageContentBehavior</string>
+    
+    
+    
+    
+    <string name="help_reward_title1">什么是返利?</string>
+    <string name="help_reward_title2">下单后在哪里查看到返利? 返利何时到账?</string>
+    <string name="help_reward_title3">返利如何提现?</string>
+    
+    
+    <string name="help_reward_content1">
+        券猫猫作为电商的渠道,给消费者推荐商家促销的商品;\n消费者下单成交后,商家为了答谢券猫猫,将给券猫猫相应的金额作为酬劳,券猫猫将这部分酬劳返利给用户;\n用户使用优惠券买到了商品,并获得了返利;\n
+        券猫猫则作为媒介渠道,为商家带来销量,为用户省钱,省更多
+    </string>
+    
+    
+    <string name="help_reward_content2">
+        1. 用户下单5分钟后,查到返利结果;\n
+        2. 可在"我\"—\"我的返利\"中查看返利情况;\n3.返利金额小于等于30元,返利在您收货后1小时内到账;订单金额大于30元,将收货后17天到账;\n4. 券猫猫拿到商家返利数据,商品页仅展示作为参考,具体返利以商家实际促销返利金额为准\n5. 以下情况没有返利:\n\tA.使用了红包\n\tB.下单没有在券猫猫APP内进行\n\tC.虚拟订单,以及刷单行为\n\tD.大型电商节日,各种电商政策等\n\tE.具体情况请咨询客服
+    </string>
+    
+    
+    <string name="help_reward_content3">
+        下单收货后,返利金额结算给用户,金额累积到\"我\"—\"可提现\",可以提现到用户的支付宝账号;\n
+        为了确保提现准确无误,用户填写的支付宝账号和姓名信息必须匹配,否则提现失败
+    </string>
+</resources>

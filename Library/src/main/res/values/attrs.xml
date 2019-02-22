@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="radius" format="dimension"/>
+    <attr name="src" format="reference"/>
+	
+	<attr name="horGap" format="dimension"/>
+	<attr name="verGap" format="dimension"/>
+	
+	<attr name="gravity" format="flags">
+		<flag name="top" value="0"/>
+		<flag name="bottom" value="1"/>
+	</attr>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="radius"/>
+    </declare-styleable>
+	
+	
+	<declare-styleable name="BgTextView">
+		<attr name="src"/>
+	</declare-styleable>
+	
+	
+	<declare-styleable name="AutoWrapLayout">
+		<attr name="maxLineCount" format="integer"/>
+		<attr name="horGap"/>
+		<attr name="verGap"/>
+	</declare-styleable>
+	
+	
+	<declare-styleable name="ScrollCoordinateLayout">
+		<attr name="allowOverScroll" format="boolean"/>
+	</declare-styleable>
+	
+	
+	<declare-styleable name="BgImageView">
+		<attr name="src"/>
+		<attr name="gravity"/>
+	</declare-styleable>
+	
+	
+	<declare-styleable name="AutoClearImageView">
+		<attr name="src"/>
+	</declare-styleable>
+</resources>

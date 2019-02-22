@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="7dp">
+    
+    <com.gogoh5.apps.quanmaomao.library.widgets.RoundImageView
+            android:id="@+id/productPicImg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+	        app:radius="5dp"/>
+
+    
+    <TextView
+	    android:id="@+id/brandTxt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="8dp"
+	    android:layout_marginStart="8dp"
+	    android:layout_marginTop="5dp"
+	    app:layout_constraintLeft_toRightOf="@+id/productPicImg"
+	    app:layout_constraintTop_toTopOf="@+id/productPicImg"
+	    android:paddingLeft="3dp"
+	    android:paddingRight="3dp"
+	    android:paddingTop="1dp"
+	    android:paddingBottom="1dp"
+	    android:text="--"
+	    android:textSize="@dimen/text_small"/>
+    
+	<TextView
+		android:id="@+id/titleTxt"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="2dp"
+		android:layout_marginStart="2dp"
+		app:layout_goneMarginLeft="8dp"
+		app:layout_goneMarginStart="8dp"
+		app:layout_constraintLeft_toRightOf="@+id/brandTxt"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="@id/brandTxt"
+		android:maxLines="2"
+		android:minLines="2"
+		android:ellipsize="end"
+		android:text="--"
+		android:textSize="@dimen/text_normal"
+		android:textColor="@color/blackColor"/>
+	
+	<!--info container-->
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/infoContainer"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="5dp"
+		app:layout_constraintLeft_toLeftOf="@id/brandTxt"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="@id/productPicImg">
+		
+		<TextView
+			android:id="@+id/rewardTipsTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_goneMarginLeft="8dp"
+			app:layout_goneMarginStart="8dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:text="下单后"
+			android:textSize="@dimen/text_micro"
+			android:textColor="@color/greyColor"/>
+		
+		<TextView
+			android:id="@+id/rewardTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="5dp"
+			android:layout_marginStart="5dp"
+			app:layout_constraintLeft_toRightOf="@+id/rewardTipsTxt"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:paddingLeft="3dp"
+			android:paddingRight="3dp"
+			android:paddingTop="1.5dp"
+			android:paddingBottom="1.5dp"
+			android:maxLines="1"
+			android:ellipsize="end"
+			android:text="返--"
+			android:textSize="@dimen/text_micro"
+			android:textColor="@color/redColor"
+			android:background="@drawable/bg_reward"/>
+		
+		<com.gogoh5.apps.quanmaomao.library.widgets.BgTextView
+			android:id="@+id/couponTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:paddingTop="3dp"
+			android:paddingBottom="3dp"
+			android:text="--元券"
+			android:textSize="@dimen/text_micro"
+			android:textColor="@color/whiteColor"
+			app:src="@drawable/img_coupon"/>
+		
+		
+	</android.support.constraint.ConstraintLayout>
+	
+	
+	<TextView
+		android:id="@+id/priceTipsTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_goneMarginLeft="8dp"
+		app:layout_goneMarginStart="8dp"
+		android:layout_marginBottom="3dp"
+		app:layout_constraintBottom_toTopOf="@+id/infoContainer"
+		app:layout_constraintLeft_toLeftOf="@id/infoContainer"
+		android:text="返后¥"
+		android:textSize="@dimen/text_micro"
+		android:textColor="@color/redColor"/>
+	
+	<TextView
+		android:id="@+id/priceTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="3dp"
+		android:layout_marginStart="3dp"
+		app:layout_constraintLeft_toRightOf="@+id/priceTipsTxt"
+		app:layout_constraintBaseline_toBaselineOf="@id/priceTipsTxt"
+		android:text="--"
+		android:textSize="@dimen/text_micro"
+		android:textColor="@color/redColor"/>
+	
+	<TextView
+		android:id="@+id/saleNumTxt"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBaseline_toBaselineOf="@id/priceTipsTxt"
+		android:text="已抢--件"
+		android:textSize="@dimen/text_micro"
+		android:textColor="@color/greyColor"/>
+	
+	
+</android.support.constraint.ConstraintLayout>
