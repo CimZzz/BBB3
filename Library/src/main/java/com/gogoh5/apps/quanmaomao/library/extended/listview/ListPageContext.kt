@@ -12,46 +12,54 @@ import com.gogoh5.apps.quanmaomao.library.widgets.ScrollCoordinateLayout
 import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
 import java.lang.ref.WeakReference
 
-abstract class ListPageContext<T : ListPageDataBundle>(context: Context? = null) {
-    lateinit var listPageDataBundle: T
+abstract class ListPageContext(context: Context? = null) {
+    lateinit var listPageDataBundle: ListPageDataBundle
         internal set
-    internal lateinit var listPageView: IListPageView
-    internal lateinit var listPagePresenter: ListPagePresenter
 
     private val contextRef: WeakReference<Context?> = WeakReference(context)
-
-    val headerAdapter: ListPageHeaderAdapter by lazy { ListPageHeaderAdapter(this) }
-    val contentAdapter: ListPageContentAdapter by lazy { ListPageContentAdapter(this) }
+    internal lateinit var listPageView: IListPageView
+    internal lateinit var listPagePresenter: ListPagePresenter
+    internal val headerAdapter: ListPageHeaderAdapter by lazy { ListPageHeaderAdapter(this) }
+    internal val contentAdapter: ListPageContentAdapter by lazy { ListPageContentAdapter(this) }
     internal val listPageViewCallback: ListPageViewCallback by lazy { ListPageViewCallback(this) }
-    internal var isContentLoading : Boolean = false
 
-    open val isHeaderOnly: Boolean = false
-    open val isContentOnly: Boolean = false
-    protected open val isAutoHeaderOffset: Boolean = false
-    abstract val isDependentContentRequest: Boolean
-    abstract val isExistContentBottom: Boolean
-    abstract val isAllowHeaderRefresh: Boolean
-    protected abstract val hasFilterBar: Boolean
+    /*配置参数*/
     abstract val headerCreatorList: Array<IListPageHeaderCreator>
     abstract val contentCreatorList: Array<IListPageContentCreator>
-    open val defaultHeaderRenderer: Array<out BaseRenderer>? = null
+    open val defaultTopHeaderRenderer: Array<out BaseRenderer>? = null
+    open val defaultBottomHeaderRenderer: Array<out BaseRenderer>? = null
 
-    abstract fun generateDataBundle() : T
 
+    /*配置开关*/
+    open val isHeaderOnly: Boolean = false
+    open val isContentOnly: Boolean = false
+    abstract val isDependentContentRequest: Boolean
+    abstract val isExistContentBottom: Boolean
+    abstract val isExistFilterBar: Boolean
+    abstract val isAllowHeaderRefresh: Boolean
+    open val isAutoHeaderOffset: Boolean = false
+
+    /*临时状态参数*/
+
+    /*生命周期*/
+    abstract fun generateDataBundle() : ListPageDataBundle
     open fun buildContentList(recyclerView: RecyclerView) {
 
     }
 
-    open fun generateOuterView(parent: ScrollCoordinateLayout, headerParent: AppBarLayout): View? = null
-
+    /*生成相关View*/
     open fun generateRefreshHeader(parent: ViewGroup): View? = null
 
     open fun generateBottomStateBar(parent: ViewGroup) : ViewHandler? = null
 
-
     open fun generateFilterBarController(parent: ViewGroup): ListPageBaseHeaderController<*>? = null
 
     open fun generateFilterWindow(parent: ViewGroup): ListPageFilterWindow? = null
+
+    open fun generateOuterView(parent: ScrollCoordinateLayout, headerParent: AppBarLayout): View? = null
+
+
+    /*事件拦截*/
     open fun onLinkInterceptor(viewType: Int, link: BaseLink?) {
     }
 
@@ -59,20 +67,32 @@ abstract class ListPageContext<T : ListPageDataBundle>(context: Context? = null)
 
     }
 
+    /*检查方法*/
     open fun checkHeaderRefreshDistance(headerView: View, distance: Float): Float = 0f
 
-    open fun getRefreshMaxScrollY(headerView: View): Float = -1f
-
-    internal fun isAutoHeaderOffset() = !isContentOnly && (isAutoHeaderOffset || isHeaderOnly)
-
-    internal fun hasFilterBar() = hasFilterBar && !isHeaderOnly
+    open fun checkRefreshMaxScrollY(headerView: View): Float = -1f
 
     internal fun checkPreload(position: Int) {
         if(listPageDataBundle.contentState == ListPage.CONTENT_LOAD &&
-            !isContentLoading && onCheckPreload(position, listPageDataBundle.contentList.size)) {
-            isContentLoading = true
+            !listPageDataBundle.isContentLoading && onCheckPreload(position, listPageDataBundle.contentList.size)) {
             listPagePresenter.requestPage(listPageDataBundle.pageNum + 1)
         }
+    }
+
+    abstract fun onCheckPreload(position: Int, totalCount: Int) : Boolean
+
+    /*包装方法*/
+
+    internal fun isAutoHeaderOffset() = !isContentOnly && (isAutoHeaderOffset || isHeaderOnly)
+
+    internal fun hasFilterBar() = isExistFilterBar && !isHeaderOnly
+
+    fun getContext(): Context? = contextRef.get()
+
+
+    fun collapseHeader(collapseHeader: Boolean, animate: Boolean) {
+        if(listPageDataBundle.state == ListPage.STATE_CONTENT)
+            listPageView.collapseHeader(collapseHeader, animate)
     }
 
     fun attachFilterWindow() {
@@ -100,13 +120,6 @@ abstract class ListPageContext<T : ListPageDataBundle>(context: Context? = null)
         listPagePresenter.requestPage(listPageDataBundle.pageNum + 1)
     }
 
-    fun collapseHeader(collapseHeader: Boolean, animate: Boolean) {
-        if(listPageDataBundle.state == ListPage.STATE_CONTENT)
-            listPageView.collapseHeader(collapseHeader, animate)
-    }
-
-    fun getContext(): Context? = contextRef.get()
-
     inline fun <reified T> getVariableValue(key: String, defaultValue: T? = null): T? = listPageDataBundle.getVariable(key, defaultValue) as T
     fun setVariableValue(key: String, any: Any?) = listPageDataBundle.setVariable(key, any)
 
@@ -117,5 +130,4 @@ abstract class ListPageContext<T : ListPageDataBundle>(context: Context? = null)
     abstract fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>
     abstract fun onHeaderResult(params: Array<out Any>): List<BaseRenderer>?
     abstract fun onContentResult(pageNum: Int, params: Array<out Any>): Pair<List<BaseRenderer>?, Boolean>
-    abstract fun onCheckPreload(position: Int, totalCount: Int) : Boolean
 }

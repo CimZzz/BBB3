@@ -66,7 +66,23 @@ object StringUtils {
     }
 
     fun formatCount(count: Long): String {
-        return count.toString()
+        var postfix = 0
+        val afterCount: Double
+        if(count >= 1000000L) {
+            postfix = 1
+            afterCount = count * 1.0 / 1000000
+        }
+        else if(count > 10000L) {
+            postfix = 2
+            afterCount = count * 1.0 / 10000
+        }
+        else afterCount = count.toDouble()
+
+        return when(postfix) {
+            1 -> "${formatPrice(afterCount)}百万"
+            2 -> "${formatPrice(afterCount)}万"
+            else -> count.toString()
+        }
     }
 
     fun formatByteSize(byteSize: Long?): String {

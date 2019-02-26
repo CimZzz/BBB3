@@ -21,7 +21,7 @@ abstract class BaseLink: Serializable {
             doPerform(context)
         }
         catch (e: Exception) {
-
+            e.printStackTrace()
         }
     }
 

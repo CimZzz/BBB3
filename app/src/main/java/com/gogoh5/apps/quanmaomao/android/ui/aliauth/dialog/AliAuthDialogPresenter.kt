@@ -2,6 +2,7 @@ package com.gogoh5.apps.quanmaomao.android.ui.aliauth.dialog
 
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
+import com.gogoh5.apps.quanmaomao.library.environment.constants.Http
 import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 
 class AliAuthDialogPresenter(view: IAliAuthDialogView) : BaseMethodPresenter<IAliAuthDialogView, AliAuthDialogMethod>(view) {
@@ -36,5 +37,13 @@ class AliAuthDialogPresenter(view: IAliAuthDialogView) : BaseMethodPresenter<IAl
     fun onUpdateFailure(msg: String?) {
         sendToast(msg)
         view.closeWaitDialog()
+    }
+
+    fun linkProtocol() {
+        LinkUtils.linkWeb(Http.H5.PROTOCOL.url, context = view.getContext())
+    }
+
+    fun linkMain() {
+        LinkUtils.linkMain(isClose = true, context = view.getContext())
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:background="@color/whiteColor">
+
+	<android.support.constraint.ConstraintLayout
+			android:id="@+id/actionBarContainer"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/actionBarHeight"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			android:paddingLeft="@dimen/margin_small"
+			android:paddingStart="@dimen/margin_small"
+			android:paddingRight="@dimen/margin_small"
+			android:paddingEnd="@dimen/margin_small">
+
+		<ImageView
+				android:id="@+id/backBtn"
+				android:layout_width="@dimen/actionBarIconSize"
+				android:layout_height="@dimen/actionBarIconSize"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:padding="10dp"
+				android:src="@drawable/icon_back_1"/>
+
+		<TextView
+				android:id="@+id/titleTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:maxLines="1"
+				android:ellipsize="end"
+				android:text="我的提现"
+				android:textSize="@dimen/text_middle"
+				android:textColor="@color/blackColor"/>
+
+	</android.support.constraint.ConstraintLayout>
+
+	<View android:layout_width="0dp" android:layout_height="0.5dp" android:id="@+id/splitLine"
+		  app:layout_constraintLeft_toLeftOf="parent"
+		  app:layout_constraintRight_toRightOf="parent"
+		  app:layout_constraintTop_toBottomOf="@+id/actionBarContainer"
+		android:background="@color/lightGreyColor"/>
+
+	<FrameLayout
+			android:id="@+id/pageContainer"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/splitLine"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:background="@color/lightGreyColor">
+
+	</FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

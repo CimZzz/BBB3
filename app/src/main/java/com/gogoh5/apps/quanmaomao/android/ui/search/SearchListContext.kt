@@ -13,20 +13,17 @@ import com.gogoh5.apps.quanmaomao.library.environment.constants.RendererType
 import com.gogoh5.apps.quanmaomao.library.extended.listview.ListPageBaseHeaderController
 import com.gogoh5.apps.quanmaomao.library.requests.GetProductListRequest
 
-class SearchListContext(context: Context? = null): ProductListPageContext(context) {
+class SearchListContext(context: Context? = null, val callback: Callback): ProductListPageContext(context) {
     val KEY_WORD = "_home_key_word"
 
     override val isContentOnly: Boolean
         get() = true
 
-    override val hasFilterBar: Boolean
+    override val isExistFilterBar: Boolean
         get() = true
 
-    override val defaultHeaderRenderer: Array<out BaseRenderer>?
-        get() = arrayOf(HotSearchRenderer())
-
     override fun generateFilterBarController(parent: ViewGroup): ListPageBaseHeaderController<*>? {
-        return ProductFilterBar(parent)
+        return ProductFilterBar(parent, true)
     }
 
     override fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*> =
@@ -41,9 +38,10 @@ class SearchListContext(context: Context? = null): ProductListPageContext(contex
 
     override fun onEvent(viewType: Int, vararg params: Any?) {
         when(viewType) {
-            RendererType.HEADER_HOT_SEARCH -> {
+            RendererType.HEADER_FILTER_BAR -> {
                 if(params.isNotEmpty()) {
                     if(params[0] is String) {
+                        callback.configSearchContent(params[0] as String)
                         setConfigValue(KEY_WORD, params[0])
                         collapseHeader(true, false)
                         refreshContent()
@@ -51,5 +49,9 @@ class SearchListContext(context: Context? = null): ProductListPageContext(contex
                 }
             }
         }
+    }
+
+    interface Callback {
+        fun configSearchContent(txt: String)
     }
 }

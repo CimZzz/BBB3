@@ -57,7 +57,7 @@ class MePage(mainPresenter: MainPresenter) : BaseMainPage<Unit>(mainPresenter), 
                     }
 
                     view.balanceContainer.tapWith("我的页面余额", ActionSource.MAIN_ME_BALANCE) {
-                        presenter.linkCash()
+                        presenter.linkCashList()
                     }
 
                     view.rewardContainer.tapWith("我的页面返利", ActionSource.MAIN_ME_REWARD) {

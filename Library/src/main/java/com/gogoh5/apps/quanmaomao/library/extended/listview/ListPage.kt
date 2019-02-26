@@ -10,14 +10,13 @@ import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
 import com.gogoh5.apps.quanmaomao.library.extensions.setSize
 import com.gogoh5.apps.quanmaomao.library.extensions.tapWith
 import com.gogoh5.apps.quanmaomao.library.utils.ViewUtils
-import com.gogoh5.apps.quanmaomao.library.widgets.LazyAppbarLayout
 import com.gogoh5.apps.quanmaomao.library.widgets.ScrollCoordinateLayout
 import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
 import kotlinx.android.synthetic.main.sub_page_list.view.*
 import java.lang.RuntimeException
 
 @Suppress("UNCHECKED_CAST")
-class ListPage<T: ListPageDataBundle>(private val listPageContext: ListPageContext<T>) : BasePage<T>(), IListPageView {
+class ListPage(private val listPageContext: ListPageContext) : BasePage<ListPageDataBundle>(), IListPageView {
 
     companion object {
         internal val STATE_LOADING = 0
@@ -30,8 +29,6 @@ class ListPage<T: ListPageDataBundle>(private val listPageContext: ListPageConte
 
         internal val LAZY_MODE_NONE = 0
         internal val LAZY_MODE_UPDATE = 1
-
-        internal const val VARIABLE_KEY_FILTER_BAR = "__Filter_Bar"
     }
 
     lateinit var viewHandler: ViewHandler
@@ -41,12 +38,12 @@ class ListPage<T: ListPageDataBundle>(private val listPageContext: ListPageConte
 
     internal var filterWindow: ListPageFilterWindow? = null
 
-    override fun generateDataParcelable(): T = listPageContext.generateDataBundle()
+    override fun generateDataParcelable(): ListPageDataBundle = listPageContext.generateDataBundle()
 
     override fun initViewPage(parent: ViewGroup, bindBean: Any, position: Int) {
         super.initViewPage(parent, bindBean, position)
         listPageContext.listPageView = this
-        listPageContext.listPageDataBundle = bindBean as T
+        listPageContext.listPageDataBundle = bindBean as ListPageDataBundle
         presenter = ListPagePresenter(this)
         presenter.onInitPresenter(MixDataBundle(readable = {
             listPageContext
@@ -119,7 +116,7 @@ class ListPage<T: ListPageDataBundle>(private val listPageContext: ListPageConte
 
             contentView.isAllowRefresh = true
             contentView.refreshListener = object : ScrollCoordinateLayout.OnRefreshListener {
-                override fun getMaxScrollY(): Float = listPageContext.getRefreshMaxScrollY(refreshHeaderView)
+                override fun getMaxScrollY(): Float = listPageContext.checkRefreshMaxScrollY(refreshHeaderView)
 
                 override fun onRefreshing() {
                     listPageContext.refreshAll(false)

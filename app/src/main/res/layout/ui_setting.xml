@@ -58,10 +58,10 @@
 		android:id="@+id/aliAuthContainer"
 		android:layout_width="match_parent"
 		android:layout_height="40dp"
-		android:layout_marginTop="@dimen/margin_normal"
+		android:layout_marginTop="@dimen/margin_small"
 		app:layout_constraintTop_toBottomOf="@+id/actionBarContainer"
-		android:paddingLeft="@dimen/margin_small"
-		android:paddingRight="@dimen/margin_small"
+		android:paddingLeft="@dimen/margin_normal"
+		android:paddingRight="@dimen/margin_normal"
 		android:background="@color/whiteColor">
 		
 		<ImageView
@@ -115,8 +115,8 @@
 		<View
 			android:layout_width="0dp"
 			android:layout_height="0.5dp"
-			app:layout_constraintLeft_toLeftOf="@+id/aliAuthTxt"
-			app:layout_constraintRight_toRightOf="@+id/aliAuthTipsTxt"
+			app:layout_constraintLeft_toLeftOf="@+id/aliAuthIconImg"
+			app:layout_constraintRight_toRightOf="@+id/aliAuthArrowIconImg"
 			app:layout_constraintBottom_toBottomOf="parent"
 			android:background="@color/lightGreyColor"/>
 	
@@ -127,8 +127,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="40dp"
 		app:layout_constraintTop_toBottomOf="@+id/aliAuthContainer"
-		android:paddingLeft="@dimen/margin_small"
-		android:paddingRight="@dimen/margin_small"
+		android:paddingLeft="@dimen/margin_normal"
+		android:paddingRight="@dimen/margin_normal"
 		android:background="@color/whiteColor">
 		
 		<ImageView
@@ -186,8 +186,8 @@
 		android:layout_height="40dp"
 		android:layout_marginTop="@dimen/margin_small"
 		app:layout_constraintTop_toBottomOf="@+id/wxAuthContainer"
-		android:paddingLeft="@dimen/margin_small"
-		android:paddingRight="@dimen/margin_small"
+		android:paddingLeft="@dimen/margin_normal"
+		android:paddingRight="@dimen/margin_normal"
 		android:background="@color/whiteColor">
 		
 		<ImageView
@@ -245,7 +245,7 @@
 		android:id="@+id/quitContainer"
 		android:layout_width="match_parent"
 		android:layout_height="40dp"
-		android:layout_marginTop="25dp"
+		android:layout_marginTop="30dp"
 		app:layout_constraintTop_toBottomOf="@+id/cacheContainer"
 		android:paddingLeft="@dimen/margin_small"
 		android:paddingRight="@dimen/margin_small"
@@ -261,7 +261,7 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			android:text="退出登录"
 			android:textColor="@color/redColor"
-			android:textSize="@dimen/text_small"/>
+			android:textSize="@dimen/text_normal"/>
 		
 		<ImageView
 			android:id="@+id/quitIconImg"

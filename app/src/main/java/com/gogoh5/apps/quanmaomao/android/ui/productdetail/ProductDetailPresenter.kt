@@ -1,5 +1,7 @@
 package com.gogoh5.apps.quanmaomao.android.ui.productdetail
 
+import android.net.Uri
+import android.view.View
 import com.gogoh5.apps.quanmaomao.android.entities.lazyloadbeen.ProductDetailLazyLoadBean
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
@@ -85,7 +87,7 @@ class ProductDetailPresenter(view: IProductDetailView) :
         else {
             if(!msg.isNullOrBlank())
                 sendToast(msg)
-            view.closeDirectly()
+            view.closeWaitDialog()
         }
     }
 
@@ -150,5 +152,9 @@ class ProductDetailPresenter(view: IProductDetailView) :
     fun linkCart() {
         LinkUtils.linkMain(transferPage = 2)
         view.closeDirectly()
+    }
+
+    fun linkPreview(url: String, view: View) {
+        LinkUtils.linkPreview(url,context = view.context)
     }
 }

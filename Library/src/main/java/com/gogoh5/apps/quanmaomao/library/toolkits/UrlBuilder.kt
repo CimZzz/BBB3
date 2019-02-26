@@ -11,6 +11,10 @@ class UrlBuilder(url: String, val needQuestionMark : Boolean = true) {
         if(value == null)
             return this
 
+        val str = value.toString()
+        if(str.isBlank())
+            return this
+
         if(isFirstParams) {
             isFirstParams = false
             if(needQuestionMark)
@@ -18,7 +22,7 @@ class UrlBuilder(url: String, val needQuestionMark : Boolean = true) {
         }
         else builder.append('&')
 
-        builder.append(key).append('=').append(if(needEncode) StringUtils.urlEncode(value.toString()) else value)
+        builder.append(key).append('=').append(if(needEncode) StringUtils.urlEncode(str) else value)
         return this
     }
 

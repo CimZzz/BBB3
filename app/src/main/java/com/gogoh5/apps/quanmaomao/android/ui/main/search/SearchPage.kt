@@ -1,8 +1,10 @@
 package com.gogoh5.apps.quanmaomao.android.ui.main.search
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.gogoh5.apps.quanmaomao.android.R
 import com.gogoh5.apps.quanmaomao.android.ui.main.BaseMainPage
@@ -60,6 +62,10 @@ class SearchPage(mainPresenter: MainPresenter) : BaseMainPage<Unit>(mainPresente
 
     override fun onQuitPage() {
         presenter.viewQuit()
+        val inputMethodManager = getContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = (getContext() as Activity).window.peekDecorView()
+        if(view != null)
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     override fun onDestroyPage() {

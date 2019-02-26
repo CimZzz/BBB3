@@ -56,6 +56,12 @@ enum class ActionSource(
     CASH_BALANCE_ALL(codeCount ++),
     CASH_CASH(codeCount ++),
 
+    CASH_LIST_BACK(codeCount ++),
+
+    ALI_AUTH_DIALOG_BACK(codeCount ++),
+    ALI_AUTH_DIALOG_PROTOCOL(codeCount ++),
+    ALI_AUTH_DIALOG_AGREE(codeCount ++),
+
     SETTING_BACK(codeCount ++),
     SETTING_WX_AUTH(codeCount ++),
     SETTING_CACHE(codeCount ++),

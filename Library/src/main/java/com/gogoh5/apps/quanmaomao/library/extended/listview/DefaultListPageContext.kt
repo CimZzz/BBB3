@@ -26,7 +26,7 @@ import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
  *  Since Version : Alpha
  */
 abstract class DefaultListPageContext(context: Context? = null) : ListPageContext<ListPageDataBundle>(context) {
-    override val hasFilterBar: Boolean
+    val isExistFilterBar: Boolean
         get() = false
     override val isContentOnly: Boolean = true
     override val isHeaderOnly: Boolean = false

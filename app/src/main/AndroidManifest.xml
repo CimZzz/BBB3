@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
           package="com.gogoh5.apps.quanmaomao.android">
 
-    <uses-sdk tools:overrideLibrary="com.facebook.react"/>
-
     <application>
+        <activity android:name=".ui.test.TestUI"
+                  android:theme="@style/NoActionBarPortraitStyle">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
         <activity android:name=".ui.launch.LaunchUI"
             android:theme="@style/NoTitleBarStyle">
             <intent-filter>
@@ -33,13 +39,22 @@
         <activity android:name=".ui.setting.SettingUI"
                   android:theme="@style/NoActionBarPortraitStyle">
         </activity>
-    
+
         <activity android:name=".ui.cash.CashUI"
                   android:theme="@style/NoActionBarPortraitStyle">
         </activity>
-    
+
+        <activity android:name=".ui.cashlist.CashListUI"
+                  android:theme="@style/NoActionBarPortraitStyle">
+        </activity>
+
         <activity android:name=".ui.balancedetail.BalanceDetailUI"
                   android:theme="@style/NoActionBarPortraitStyle">
+        </activity>
+
+        <activity android:name=".ui.preview.PreviewUI"
+                  android:theme="@style/NoTitleBarStyle"
+                  android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".ui.aliauth.dialog.AliAuthDialogUI"
@@ -47,6 +62,7 @@
         
         <activity android:name=".ui.aliauth.ui.AliAuthUI"
                   android:theme="@style/TransparentStyle"/>
+
     </application>
 
 </manifest>

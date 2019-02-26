@@ -9,7 +9,7 @@ import com.gogoh5.apps.quanmaomao.library.extensions.selectionEnd
 import com.gogoh5.apps.quanmaomao.library.extensions.tapWith
 import kotlinx.android.synthetic.main.ui_search.*
 
-class SearchUI: BaseUI<SearchPresenter>(), ISearchView {
+class SearchUI: BaseUI<SearchPresenter>(), ISearchView, SearchListContext.Callback {
 
     private lateinit var listPage: ListPage<ListPageDataBundle>
     private lateinit var pageContext: SearchListContext
@@ -26,7 +26,7 @@ class SearchUI: BaseUI<SearchPresenter>(), ISearchView {
             finish()
         }
 
-        pageContext = SearchListContext(this)
+        pageContext = SearchListContext(this, this)
         listPage = ListPage(pageContext)
         listPage.initViewPage(pageContainer, listPage.generateDataParcelable(), 0)
         listPage.attachView(pageContainer)
@@ -45,8 +45,11 @@ class SearchUI: BaseUI<SearchPresenter>(), ISearchView {
     }
 
     override fun configPage(searchContent: String?) {
-        searchContentTxt.setText(searchContent)
+        searchContentTxt.text = searchContent
         pageContext.configSearchContent(searchContent)
     }
 
+    override fun configSearchContent(txt: String) {
+        searchContentTxt.text = txt
+    }
 }

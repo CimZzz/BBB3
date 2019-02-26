@@ -62,7 +62,7 @@
 	<View
 		android:id="@+id/bg1"
 		android:layout_width="0dp"
-		android:layout_height="@dimen/margin_tiny"
+		android:layout_height="@dimen/margin_small"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/actionBarContainer"
@@ -121,7 +121,7 @@
 			android:inputType="numberDecimal"
 			android:hint="金额大于1元"
 			android:textColor="@color/blackColor"
-			android:textColorHint="@color/greyColor"
+			android:textColorHint="#BBBBBB"
 			android:textSize="@dimen/text_big"
 			android:background="@null"/>
 		

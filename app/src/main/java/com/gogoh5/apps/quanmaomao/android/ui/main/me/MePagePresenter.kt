@@ -77,14 +77,14 @@ class MePagePresenter(view: IMePageView) : BaseMethodPresenter<IMePageView, MePa
     }
 
     fun linkReward() {
-
+        LinkUtils.linkRN("index", "HelloWorld", context = view.getContext())
     }
 
     fun linkOrder() {
         LinkUtils.linkWeb("", aliPage = WebLink.PAGE_ORDER, context = view.getContext())
     }
 
-    fun linkCash() {
-
+    fun linkCashList() {
+        LinkUtils.linkCashList(view.getContext())
     }
 }

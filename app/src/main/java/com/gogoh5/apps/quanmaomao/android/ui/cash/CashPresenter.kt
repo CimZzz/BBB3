@@ -2,6 +2,7 @@ package com.gogoh5.apps.quanmaomao.android.ui.cash
 
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
+import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 
 class CashPresenter(view: ICashView) : BaseMethodPresenter<ICashView, CashMethod>(view) {
     override fun generateMethod(): CashMethod = CashMethod(this)
@@ -11,7 +12,7 @@ class CashPresenter(view: ICashView) : BaseMethodPresenter<ICashView, CashMethod
     }
 
     fun linkBalanceDetail() {
-
+        LinkUtils.linkBalanceDetail(view.getContext())
     }
 
     fun configAllBalance() {

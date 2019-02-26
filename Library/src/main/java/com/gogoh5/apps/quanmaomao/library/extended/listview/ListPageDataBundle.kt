@@ -9,6 +9,8 @@ open class ListPageDataBundle() : Parcelable {
 
     internal var state = ListPage.STATE_LOADING
     internal var contentState = ListPage.CONTENT_LOAD
+    internal var isContentLoading : Boolean = false
+
     internal var pageNum = 0
     internal var headerList: ArrayList<BaseRenderer> = ArrayList()
     internal var contentList: ArrayList<BaseRenderer> = ArrayList()

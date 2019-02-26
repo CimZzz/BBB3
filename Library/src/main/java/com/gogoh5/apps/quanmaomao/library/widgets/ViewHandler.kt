@@ -24,6 +24,7 @@ class ViewHandler : ConstraintLayout {
         }
 
     var viewStubFirstBind : ((View, Int) -> Unit)? = null
+    var viewVisibleCallback : ((View, Int, Int) -> Unit)? = null
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -48,7 +49,7 @@ class ViewHandler : ConstraintLayout {
     fun showView(layoutId : Int) : View? {
         if(currentShowId == layoutId)
             return currentShowView
-        var view : View? = null
+        var view : View
         (0 until childCount).map { getChildAt(it) }.filter { it.id != View.NO_ID && !(it.tag?.equals("No")?:false) }.forEach {
 
             if(it.id == layoutId) {
@@ -58,19 +59,37 @@ class ViewHandler : ConstraintLayout {
                 it.visibility = View.VISIBLE
                 viewStubFirstBind?.let {
                     runnable ->
-                    runnable(view!!, layoutId)
+                    runnable(view, layoutId)
                 }
+
+                viewVisibleCallback?.let {
+                    runnable->
+                    runnable(view, layoutId, View.VISIBLE)
+                }
+                currentShowView = view
+                currentShowId = layoutId
             }
             else {
-                if(it.tag == "EXIST")
+                if(it.tag == "EXIST") {
                     it.visibility = View.INVISIBLE
-                else it.visibility = View.GONE
+                    viewVisibleCallback?.let {
+                        runnable->
+                        runnable(it, layoutId, View.INVISIBLE)
+                    }
+                }
+                else {
+                    it.visibility = View.GONE
+                    viewVisibleCallback?.let {
+                        runnable->
+                        runnable(it, layoutId, View.GONE)
+                    }
+                }
+
+
             }
         }
 
-        currentShowId = layoutId
-        currentShowView = view
-        return view
+        return currentShowView
     }
 
 

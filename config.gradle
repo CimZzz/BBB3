@@ -59,7 +59,7 @@ ext {
             [kapt, 'com.github.bumptech.glide:compiler:4.8.0'],
 
             //OkHttp3
-            [api, 'com.squareup.okhttp3:okhttp:3.12.0'],
+//            [api, 'com.squareup.okhttp3:okhttp:3.12.0'],
 
             //轮播图
             [api, 'com.bigkoo:ConvenientBanner:2.1.4'],
@@ -74,7 +74,7 @@ ext {
             [implementation, 'com.bigkoo:alertview:1.0.3'],
 
             //React-Native
-            [implementation, 'com.facebook.react:react-native:+']
+            [api, 'com.facebook.react:react-native:+']
     ]
 
     allDependenciesMap = [

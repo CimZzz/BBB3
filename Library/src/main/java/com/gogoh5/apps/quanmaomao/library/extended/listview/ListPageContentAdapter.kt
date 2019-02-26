@@ -10,7 +10,7 @@ import com.gogoh5.apps.quanmaomao.library.extensions.tapWith
 import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
 import java.lang.RuntimeException
 
-class ListPageContentAdapter(private val listPageContext: ListPageContext<*>) : RecyclerView.Adapter<ListPageBaseContentHolder<out BaseRenderer>>() {
+class ListPageContentAdapter(private val listPageContext: ListPageContext) : RecyclerView.Adapter<ListPageBaseContentHolder<out BaseRenderer>>() {
     private var isSlowly = true
 
     override fun getItemCount(): Int =

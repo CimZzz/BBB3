@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSONObject
 import com.gogoh5.apps.quanmaomao.library.utils.JSONUtils
 import com.gogoh5.apps.quanmaomao.library.utils.StringUtils
 import java.io.Serializable
+import java.util.*
 
 data class ProductDetailBean (
     val bannerArr: Array<String>,
     val sourceType: Int,
+    val IsTmall: Boolean,
     val title: String,
     val orgPrice: Double,
     val saleCount: Long,
@@ -75,11 +77,18 @@ fun parseProductDetailBean(obj: JSONObject?): ProductDetailBean? {
     else if(couponPrice != 0.0)
         priceTip = "券后"
 
-
+    val arr = JSONUtils.convertJSONArrayToStringArray(obj.getJSONArray("descDetail"))
+    val list = LinkedList<String>()
+    arr?.forEach {
+        if(it.startsWith("http"))
+            list.add(it)
+        else list.add("https:$it")
+    }
 
     return ProductDetailBean(
         bannerArr = bannerArr?:return null,
         sourceType = obj.getIntValue("sourceType"),
+        IsTmall = obj.getIntValue("IsTmall") == 1,
         title = obj.getString("Title")?:return null,
         orgPrice = obj.getDoubleValue("Org_Price"),
         saleCount = obj.getLongValue("Sales_num"),
@@ -97,6 +106,7 @@ fun parseProductDetailBean(obj: JSONObject?): ProductDetailBean? {
         sellerScore = sellerScore,
         postScore = postScore,
         aliClick = obj.getString("ali_click"),
-        descDetail = JSONUtils.convertJSONArrayToStringArray(obj.getJSONArray("descDetail"))
+        descDetail = list.toTypedArray()
     )
+
 }

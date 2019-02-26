@@ -23,8 +23,8 @@ data class ProductBean(
     val shopId_s: String,
     val shopName_s: String,
     val shopIcon_s: String,
-    val reward: Double = 0.0
-
+    val reward: Double = 0.0,
+    val IsTmall: Boolean
 ): Serializable {
 
 }
@@ -53,6 +53,7 @@ fun parseProductBean(obj: JSONObject?): ProductBean? {
         shopId_s = obj.getString("shopId_s")?:"",
         shopName_s = obj.getString("shopName_s")?:"",
         shopIcon_s = obj.getString("shopIcon_s")?:"",
-        reward = obj.getDoubleValue("reward")
+        reward = obj.getDoubleValue("reward"),
+        IsTmall = obj.getIntValue("IsTmall") == 1
     )
 }

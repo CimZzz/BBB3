@@ -1,5 +1,6 @@
 package com.gogoh5.apps.quanmaomao.library.environment.modules
 
+import android.net.Uri
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -39,6 +40,11 @@ class GlideModule private constructor(): BaseModule() {
 
     inline fun <reified T> loadNetPicDirectly(url : String?, default: Int, target : Target<T>) =
         glide.`as`(T::class.java).load(url).apply(option().error(default)).into(target)
+
+
+    fun loadUriDirectly(uri: Uri, view: ImageView) {
+        glide.load(uri).into(view)
+    }
 
     fun fromUrl(url : String?) = glide.load(url)
 

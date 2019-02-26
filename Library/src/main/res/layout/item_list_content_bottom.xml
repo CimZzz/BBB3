@@ -40,7 +40,7 @@
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent"
 		android:gravity="center"
-		android:text="加载完毕"
+		android:text="到底啦，去看看其他页面吧~"
 		android:textColor="@color/blackColor"
 		android:background="@color/lightGreyColor"/>
 

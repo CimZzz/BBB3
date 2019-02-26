@@ -2,6 +2,7 @@ package com.gogoh5.apps.quanmaomao.android.ui.productdetail
 
 import android.animation.ArgbEvaluator
 import android.graphics.Color
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
@@ -122,33 +123,41 @@ class ProductDetailUI: BaseUI<ProductDetailPresenter>(), IProductDetailView {
 
         val list = detailBean.bannerArr.toList()
         val bannerView: ConvenientBanner<String> = contentView.bannerView as ConvenientBanner<String>
-        bannerView.setPages(BannerCreator(), list)
+        bannerView.setPages(BannerCreator(object: BannerCreator.Callback {
+            override fun onClick(view: View, url: String) {
+                presenter.linkPreview(url, view)
+            }
+        }), list)
         bannerView.isCanLoop = true
 
         contentView.bannerCountTxt.setTag(R.id.data, list.size)
         contentView.titleTxt.text = detailBean.title
-        when(detailBean.sourceType) {
-            SourceType.TAOBAO -> {
-                contentView.brandTxt.visibility = View.VISIBLE
-                contentView.brandTxt.text = "淘宝"
-                contentView.brandTxt.setTextColor(SysContext.getColor(R.color.whiteColor))
-                contentView.brandTxt.setBackgroundResource(R.drawable.bg_brand_taobao)
+        if(detailBean.IsTmall) {
+            contentView.brandTxt.visibility = View.VISIBLE
+            contentView.brandTxt.text = "天猫"
+            contentView.brandTxt.setTextColor(SysContext.getColor(R.color.redColor))
+            contentView.brandTxt.setBackgroundResource(R.drawable.bg_brand_tmall)
 
-                contentView.orgPriceTxt.text = "淘宝价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
-            }
-            SourceType.TMALL -> {
-                contentView.brandTxt.visibility = View.VISIBLE
-                contentView.brandTxt.text = "天猫"
-                contentView.brandTxt.setTextColor(SysContext.getColor(R.color.redColor))
-                contentView.brandTxt.setBackgroundResource(R.drawable.bg_brand_tmall)
-
-                contentView.orgPriceTxt.text = "天猫价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
-            }
-            else -> {
-                contentView.brandTxt.visibility = View.GONE
-                contentView.orgPriceTxt.text = "原价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
-            }
+            contentView.orgPriceTxt.text = "天猫价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
         }
+        else {
+            contentView.brandTxt.visibility = View.VISIBLE
+            contentView.brandTxt.text = "淘宝"
+            contentView.brandTxt.setTextColor(SysContext.getColor(R.color.whiteColor))
+            contentView.brandTxt.setBackgroundResource(R.drawable.bg_brand_taobao)
+
+            contentView.orgPriceTxt.text = "淘宝价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
+        }
+//        when(detailBean.sourceType) {
+//            SourceType.TAOBAO -> {
+//            }
+//            SourceType.TMALL -> {
+//            }
+//            else -> {
+//                contentView.brandTxt.visibility = View.GONE
+//                contentView.orgPriceTxt.text = "原价 $priceSignStr${StringUtils.formatPrice(detailBean.orgPrice)}"
+//            }
+//        }
 
         contentView.saleCountTxt.text = "已抢${StringUtils.formatCount(detailBean.saleCount)}件"
 
@@ -205,6 +214,13 @@ class ProductDetailUI: BaseUI<ProductDetailPresenter>(), IProductDetailView {
             detailBean.descDetail!!.forEach {
                 val imgView: ImageView = ViewUtils.inflateView(contentView.detailContainer, R.layout.view_detail_image)
                 imgView.setTag(R.id.data, it)
+                imgView.tapWith {
+                    img->
+                    if(img == null)
+                        return@tapWith
+                    val url = img.getTag(R.id.data) as String? ?:return@tapWith
+                    presenter.linkPreview(url, img)
+                }
                 contentView.detailContainer.addView(imgView)
             }
         }

@@ -42,7 +42,7 @@ allprojects {
 
 
 subprojects {
-    boolean isLibrary = project.getName().equals("Library")
+    boolean isLibrary = project.getName() == "Library"
     if(isLibrary) {
         apply plugin: 'com.android.library'
         apply plugin: 'kotlin-kapt'
@@ -60,7 +60,17 @@ subprojects {
             targetSdkVersion 27
             versionCode project.ext.version
             versionName project.ext.versionName
+            multiDexEnabled true
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+            ndk {
+                abiFilters "armeabi-v7a", "x86", "armeabi"
+            }
+
+            packagingOptions {
+                exclude "lib/arm64-v8a/libgnustl_shared.so"
+                exclude "lib/arm64-v8a/libimagepipeline.so"
+            }
         }
 
         signingConfigs {

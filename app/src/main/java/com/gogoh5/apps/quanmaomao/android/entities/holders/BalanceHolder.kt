@@ -8,7 +8,7 @@ import com.gogoh5.apps.quanmaomao.library.utils.StringUtils
 import com.gogoh5.apps.quanmaomao.library.utils.ViewUtils
 import kotlinx.android.synthetic.main.item_balance.view.*
 
-class BalanceController(parent: ViewGroup) : ListPageBaseContentHolder<BalanceRenderer>(ViewUtils.inflateView(parent, R.layout.item_balance)) {
+class BalanceHolder(parent: ViewGroup) : ListPageBaseContentHolder<BalanceRenderer>(ViewUtils.inflateView(parent, R.layout.item_balance)) {
 
     override fun bindBean() {
         itemView.titleTxt.text = bean.balanceType

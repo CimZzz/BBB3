@@ -2,6 +2,7 @@ package com.gogoh5.apps.quanmaomao.android.entities.renderers
 
 import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductBean
+import com.gogoh5.apps.quanmaomao.library.environment.constants.SourceType
 
 data class ProductRenderer(
     val GoodsID: String,
@@ -21,7 +22,7 @@ fun parseProductRenderer(productBean: ProductBean?): ProductRenderer? {
     return ProductRenderer(
         productBean.GoodsID,
         productBean.Pic,
-        productBean.sourceType,
+        if(productBean.IsTmall) SourceType.TMALL else SourceType.TAOBAO,
         productBean.Title,
         productBean.reward,
         productBean.Price,

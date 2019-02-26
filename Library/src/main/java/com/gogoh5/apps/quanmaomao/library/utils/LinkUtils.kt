@@ -1,6 +1,9 @@
 package com.gogoh5.apps.quanmaomao.library.utils
 
 import android.content.Context
+import android.net.Uri
+import android.os.Bundle
+import android.view.View
 import com.gogoh5.apps.quanmaomao.library.base.BaseLink
 import com.gogoh5.apps.quanmaomao.library.entities.links.*
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext
@@ -37,6 +40,33 @@ object LinkUtils {
         run(SettingLink(), context)
     }
 
+    fun linkCash(context: Context? = null) {
+        run(CashLink(), context)
+    }
+
+    fun linkBalanceDetail(context: Context? = null) {
+        run(BalanceDetailLink(), context)
+    }
+
+    fun linkCashList(context: Context? = null) {
+        run(CashListLink(), context)
+    }
+
+    fun linkRN(
+        index: String,
+        componentName: String,
+        directName: String? = null,
+        context: Context? = null) {
+        run(RNLink(index, componentName, directName), context)
+    }
+
+    fun linkPreview(
+        url: String,
+        transitionView: View? = null,
+        context: Context? = null) {
+        run(PreviewLink(url, transitionView), context)
+    }
+
     fun run(
         link: BaseLink?,
         context: Context? = null
@@ -44,4 +74,5 @@ object LinkUtils {
         val constantContext = context?:SysContext.getApp()
         link?.perform(constantContext)
     }
+
 }

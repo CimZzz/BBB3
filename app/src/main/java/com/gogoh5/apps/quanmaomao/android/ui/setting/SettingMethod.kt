@@ -107,7 +107,7 @@ class SettingMethod(settingPresenter: SettingPresenter) : BaseMethod<SettingPres
 
     fun clearCache() {
         SysContext.getThread().sendRunnableWithHunter(RefDataHunter(presenterRef) {
-            presenter, params->
+            presenter, _->
             presenter.onClearCacheCallback()
         }) {
             try {

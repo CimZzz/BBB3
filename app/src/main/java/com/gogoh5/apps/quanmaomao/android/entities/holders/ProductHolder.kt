@@ -23,7 +23,7 @@ class ProductHolder(parent: ViewGroup) : ListPageBaseContentHolder<ProductRender
     override fun bindBean() {
         itemView.titleTxt.text = bean.Title
         itemView.priceTxt.text = StringUtils.buildBigPrice(bean.Price, SysContext.getResourceSp(R.dimen.text_bigPrice).toInt())
-        itemView.saleNumTxt.text = "已抢${bean.Sales_num}件"
+        itemView.saleNumTxt.text = "已抢${StringUtils.formatCount(bean.Sales_num)}件"
         itemView.rewardTxt.text = "返${StringUtils.formatPrice(bean.reward)}"
 
         if(bean.Quan_price != 0.0) {
@@ -46,9 +46,7 @@ class ProductHolder(parent: ViewGroup) : ListPageBaseContentHolder<ProductRender
                 itemView.brandTxt.setTextColor(SysContext.getColor(R.color.redColor))
                 itemView.brandTxt.setBackgroundResource(R.drawable.bg_brand_tmall)
             }
-            else -> {
-                itemView.brandTxt.visibility = View.GONE
-            }
+            else -> itemView.brandTxt.visibility = View.GONE
         }
     }
 

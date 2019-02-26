@@ -19,7 +19,7 @@ class HomePageContext(context: Context, val callback: Callback): ProductListPage
     override val headerCreatorList: Array<IListPageHeaderCreator>
         get() = arrayOf(HomeHeaderCreator, ProducHeaderCreator)
 
-    override val defaultHeaderRenderer: Array<out BaseRenderer>?
+    val defaultTopHeaderRenderer: Array<out BaseRenderer>?
         get() = arrayOf(HomeHeadRenderer(), HotSearchRenderer())
 
     override val isContentOnly: Boolean

@@ -7,7 +7,7 @@ import okhttp3.MediaType
 
 object Http {
     object ContentType {
-        val JSON = MediaType.get("application/json")
+        val JSON = MediaType.parse("application/json")
     }
 
     object Init {
@@ -26,6 +26,8 @@ object Http {
         val WX_USER_INFO = urlOf("https://api.weixin.qq.com/sns/userinfo")
 
         val DETAIL_BALANCE = pathOf("/mePage/api")
+
+        val DETAIL_CASH = pathOf("/mePage/api")
     }
 
     object Update {
@@ -36,6 +38,11 @@ object Http {
 
     object Apply {
         val CASH = pathOf("/mePage/api")
+    }
+
+
+    object H5 {
+        val PROTOCOL = pathOf("/assets/html/protocol/qmmProtocol.html")
     }
 
 
@@ -51,10 +58,13 @@ object Http {
         Http.Get.ALI_SC_AUTH_STATUS with Constants.HOST
 
         Http.Get.DETAIL_BALANCE with Constants.HOST
+        Http.Get.DETAIL_CASH with Constants.HOST
 
         Http.Update.ALI_AUTH with Constants.HOST
         Http.Update.WX_AUTH with Constants.HOST
 
         Http.Apply.CASH with Constants.HOST
+
+        Http.H5.PROTOCOL with Constants.HOST
     }
 }

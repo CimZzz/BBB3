@@ -1,9 +1,6 @@
 package com.gogoh5.apps.quanmaomao.library.extensions
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Matrix
-import android.graphics.Paint
+import android.graphics.*
 import android.support.v4.util.SparseArrayCompat
 import com.alibaba.fastjson.JSONObject
 import com.gogoh5.apps.quanmaomao.library.toolkits.EncryptUtils
@@ -126,4 +123,16 @@ fun File.forEach(run: TakeRun<File>) {
             run(it)
         }
     }
+}
+
+
+//------Point
+fun PointF.lengthOf(point: PointF): Float {
+    return getLengthOfPoint(x, point.x, y, point.y)
+}
+
+fun getLengthOfPoint(x1: Float, x2: Float, y1: Float, y2: Float): Float {
+    val distanceX = x1 - x2
+    val distanceY = y1 - y2
+    return Math.sqrt((distanceX * distanceX + distanceY * distanceY).toDouble()).toFloat()
 }
