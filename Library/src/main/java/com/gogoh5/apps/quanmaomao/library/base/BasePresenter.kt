@@ -16,8 +16,7 @@ abstract class BasePresenter<T : IView>(val view: T) {
     var markDone : Boolean = false
         private set
 
-    var lazyLoadMap: SpArray<BaseLazyLoadBean?>? = null
-        private set
+    private var lazyLoadMap: SpArray<BaseLazyLoadBean?>? = null
 
 
     /**
@@ -157,14 +156,7 @@ abstract class BasePresenter<T : IView>(val view: T) {
     /**
      * Get lazy load params
      */
-    protected inline fun<reified T: BaseLazyLoadBean> getLazyLoadParams(position: Int): T? {
-        val bean = lazyLoadMap?.get(position)
-
-        if(bean != null && bean is T)
-            return bean
-
-        return null
-    }
+    protected fun getLazyLoadParams(position: Int): BaseLazyLoadBean? = lazyLoadMap?.get(position)
 
     /**
      * Consume lazy load params

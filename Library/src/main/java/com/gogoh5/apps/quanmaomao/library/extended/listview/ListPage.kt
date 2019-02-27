@@ -19,16 +19,17 @@ import java.lang.RuntimeException
 class ListPage(private val listPageContext: ListPageContext) : BasePage<ListPageDataBundle>(), IListPageView {
 
     companion object {
-        internal val STATE_LOADING = 0
-        internal val STATE_CONTENT = 1
-        internal val STATE_FAILED = 2
 
         internal val CONTENT_LOAD = 0
+        internal val CONTENT_LOADING = 1
         internal val CONTENT_FAILED = 2
         internal val CONTENT_OVER = 3
+        internal val CONTENT_EMPTY = 4
 
-        internal val LAZY_MODE_NONE = 0
-        internal val LAZY_MODE_UPDATE = 1
+        internal const val LAZY_LOAD_ALL_HEADER = 0
+        internal const val LAZY_LOAD_ALL_CONTENT = 1
+        internal const val LAZY_LOAD_CLEAR_PAGE = 2
+        internal const val LAZY_LOAD_PAGE = 3
     }
 
     lateinit var viewHandler: ViewHandler
@@ -44,7 +45,7 @@ class ListPage(private val listPageContext: ListPageContext) : BasePage<ListPage
         super.initViewPage(parent, bindBean, position)
         listPageContext.listPageView = this
         listPageContext.listPageDataBundle = bindBean as ListPageDataBundle
-        presenter = ListPagePresenter(this)
+        presenter = ListPagePresenter(this, listPageContext)
         presenter.onInitPresenter(MixDataBundle(readable = {
             listPageContext
         }))
@@ -55,12 +56,17 @@ class ListPage(private val listPageContext: ListPageContext) : BasePage<ListPage
 
     override fun generateRootView(parent: ViewGroup): View {
         viewHandler = ViewUtils.inflateView(parent, R.layout.page_list)
+        listPageContext.buildViewHandler(viewHandler)
         viewHandler.isSaveFromParentEnabled = false
-        viewHandler.viewStubFirstBind = {
-            view, id ->
-            if(id == R.id.error) {
-                view.tapWith {
-                    presenter.refreshAll(true)
+        viewHandler.viewStubFirstBind = { view, id ->
+            when (id) {
+                R.id.error -> {
+                    view.tapWith {
+                        presenter.refreshAll(true)
+                    }
+                }
+                R.id.content -> {
+                    initContent(view as ScrollCoordinateLayout)
                 }
             }
         }
@@ -106,8 +112,13 @@ class ListPage(private val listPageContext: ListPageContext) : BasePage<ListPage
         viewHandler.showView(R.id.content)
     }
 
-    override fun initContent() {
-        contentView = viewHandler.showView(R.id.content) as ScrollCoordinateLayout
+    override fun showEmpty() {
+        detachFilterWindow()
+        viewHandler.showView(R.id.empty)
+    }
+
+    private fun initContent(contentView: ScrollCoordinateLayout) {
+        this.contentView = contentView
         if(listPageContext.isAllowHeaderRefresh) {
             refreshHeaderView = listPageContext.generateRefreshHeader(contentView) ?: throw RuntimeException("refresh header is null")
 

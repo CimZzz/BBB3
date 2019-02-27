@@ -8,6 +8,7 @@
     <item name="over" type="id"/>
     <item name="error" type="id"/>
     <item name="content" type="id"/>
+    <item name="empty" type="id"/>
 
     <item name="listHeader" type="id"/>
     <item name="listContent" type="id"/>

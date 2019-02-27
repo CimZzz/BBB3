@@ -40,14 +40,26 @@
 		android:id="@id/loading"/>
 
 	<ViewStub
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		android:layout="@layout/view_error"
-		android:inflatedId="@id/error"
-		android:id="@id/error"/>
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			android:layout="@layout/view_error"
+			android:inflatedId="@id/error"
+			android:id="@id/error"/>
+
+
+	<ViewStub
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			android:layout="@layout/view_empty"
+			android:inflatedId="@id/empty"
+			android:id="@id/empty"/>
 
 </com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler>

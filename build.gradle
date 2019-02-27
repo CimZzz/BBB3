@@ -43,9 +43,13 @@ allprojects {
 
 subprojects {
     boolean isLibrary = project.getName() == "Library"
+    boolean isTest = project.getName() == "Test"
     if(isLibrary) {
         apply plugin: 'com.android.library'
         apply plugin: 'kotlin-kapt'
+    }
+    else if(isTest) {
+        apply plugin: 'com.android.library'
     }
     else apply plugin: 'com.android.application'
     apply plugin: 'kotlin-android'
@@ -137,6 +141,24 @@ subprojects {
             }
         }
 
+        if(isTest) {
+            project.ext.testDependenciesMap.each {
+                switch (it[0]) {
+                    case 1:
+                        compile it[1]
+                        break
+                    case 2:
+                        implementation it[1]
+                        break
+                    case 3:
+                        api it[1]
+                        break
+                    case 4:
+                        kapt it[1]
+                        break
+                }
+            }
+        }
         if(isLibrary) {
             project.ext.libraryDependenciesMap.each {
                 switch (it[0]) {

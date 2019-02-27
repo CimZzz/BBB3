@@ -3,7 +3,7 @@ package com.gogoh5.apps.quanmaomao.android.entities.holders
 import android.view.View
 import android.view.ViewGroup
 import com.gogoh5.apps.quanmaomao.android.R
-import com.gogoh5.apps.quanmaomao.android.entities.renderers.ProductRenderer
+import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductRenderer
 import com.gogoh5.apps.quanmaomao.library.entities.links.ProductLink
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext
 import com.gogoh5.apps.quanmaomao.library.environment.constants.SourceType
@@ -22,7 +22,7 @@ class ProductHolder(parent: ViewGroup) : ListPageBaseContentHolder<ProductRender
 
     override fun bindBean() {
         itemView.titleTxt.text = bean.Title
-        itemView.priceTxt.text = StringUtils.buildBigPrice(bean.Price, SysContext.getResourceSp(R.dimen.text_bigPrice).toInt())
+        itemView.priceTxt.text = StringUtils.buildBigPrice(bean.afterRewardPrice, SysContext.getResourceSp(R.dimen.text_bigPrice).toInt())
         itemView.saleNumTxt.text = "已抢${StringUtils.formatCount(bean.Sales_num)}件"
         itemView.rewardTxt.text = "返${StringUtils.formatPrice(bean.reward)}"
 
@@ -33,21 +33,26 @@ class ProductHolder(parent: ViewGroup) : ListPageBaseContentHolder<ProductRender
         else itemView.couponTxt.visibility = View.GONE
 
 
-        when(bean.sourceType) {
-            SourceType.TAOBAO -> {
-                itemView.brandTxt.visibility = View.VISIBLE
-                itemView.brandTxt.text = "淘宝"
-                itemView.brandTxt.setTextColor(SysContext.getColor(R.color.whiteColor))
-                itemView.brandTxt.setBackgroundResource(R.drawable.bg_brand_taobao)
-            }
-            SourceType.TMALL -> {
-                itemView.brandTxt.visibility = View.VISIBLE
-                itemView.brandTxt.text = "天猫"
-                itemView.brandTxt.setTextColor(SysContext.getColor(R.color.redColor))
-                itemView.brandTxt.setBackgroundResource(R.drawable.bg_brand_tmall)
-            }
-            else -> itemView.brandTxt.visibility = View.GONE
+        if(bean.IsTmall) {
+            itemView.brandTxt.visibility = View.VISIBLE
+            itemView.brandTxt.text = "天猫"
+            itemView.brandTxt.setTextColor(SysContext.getColor(R.color.redColor))
+            itemView.brandTxt.setBackgroundResource(R.drawable.bg_brand_tmall)
         }
+        else {
+            itemView.brandTxt.visibility = View.VISIBLE
+            itemView.brandTxt.text = "淘宝"
+            itemView.brandTxt.setTextColor(SysContext.getColor(R.color.whiteColor))
+            itemView.brandTxt.setBackgroundResource(R.drawable.bg_brand_taobao)
+        }
+
+//        when(bean.sourceType) {
+//            SourceType.TAOBAO -> {
+//            }
+//            SourceType.TMALL -> {
+//            }
+//            else -> itemView.brandTxt.visibility = View.GONE
+//        }
     }
 
     override fun slowlyShow() {

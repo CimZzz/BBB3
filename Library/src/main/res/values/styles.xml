@@ -2,6 +2,7 @@
 <resources>
     <style name="NoActionBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="NoActionBarPortraitStyle" parent="NoActionBarStyle">

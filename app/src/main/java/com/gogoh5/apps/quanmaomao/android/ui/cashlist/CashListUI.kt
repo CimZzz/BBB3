@@ -9,7 +9,7 @@ import com.gogoh5.apps.quanmaomao.library.extensions.tapWith
 import kotlinx.android.synthetic.main.ui_cash_list.*
 
 class CashListUI: BaseUI<CashListPresenter>(), ICashListView {
-    private lateinit var listPage: ListPage<ListPageDataBundle>
+    private lateinit var listPage: ListPage
     private lateinit var pageContext: CashListPageContext
 
     override fun initPresenter(): CashListPresenter = CashListPresenter(this)

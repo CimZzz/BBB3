@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.gogoh5.apps.quanmaomao.android.R
 import com.gogoh5.apps.quanmaomao.android.entities.creators.DetailContentCreator
-import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
 import com.gogoh5.apps.quanmaomao.library.base.BaseRequest
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.ListBean
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext
@@ -25,25 +24,35 @@ class BalanceListContext(context: Context): DefaultListPageContext(context) {
     override val contentCreatorList: Array<IListPageContentCreator>
         get() = arrayOf(DetailContentCreator)
 
-    override fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*> =
+    override fun generateContentRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>? =
         GetBalanceListRequest(SysContext.getUser().uid, pageNum)
 
-    override fun onContentResult(pageNum: Int, params: Array<out Any>): Pair<List<BaseRenderer>?, Boolean> {
+    override fun onContentResult(pageNum: Int, isInit: Boolean, params: Array<out Any>): ListBean? {
+        if(params[0] as Boolean)
+            return params[1] as ListBean
 
-        if(params[0] as Boolean) {
-            val listBean = params[1] as ListBean
-            return Pair(listBean.list as List<BaseRenderer>, listBean.over)
+        return null
+    }
+
+    override fun buildViewHandler(viewHandler: ViewHandler) {
+        viewHandler.viewVisibleCallback = {
+            view, id, state ->
+            when(id) {
+                R.id.empty -> {
+                    if(state == View.VISIBLE) {
+                        view.findViewById<TextView>(R.id.titleTxt).text = "您还没有任何余额明细记录，快去下单获得返利吧!"
+                    }
+                }
+            }
         }
-
-        return Pair(null, false)
     }
 
     override fun generateBottomStateBar(parent: ViewGroup): ViewHandler? {
         val handler = super.generateBottomStateBar(parent)
         handler?.viewVisibleCallback = {
-                view, id, state ->
+            view, id, state ->
             when(id) {
-                R.id.over -> {
+                R.id.empty -> {
                     if(state == View.VISIBLE) {
                         (view as TextView).text = "您还没有任何余额明细记录，快去下单获得返利吧!"
                     }

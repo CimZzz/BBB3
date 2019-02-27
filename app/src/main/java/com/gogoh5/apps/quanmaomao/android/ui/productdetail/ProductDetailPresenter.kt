@@ -1,14 +1,11 @@
 package com.gogoh5.apps.quanmaomao.android.ui.productdetail
 
-import android.net.Uri
 import android.view.View
-import com.gogoh5.apps.quanmaomao.android.entities.lazyloadbeen.ProductDetailLazyLoadBean
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.AliScAuthBean
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductDetailBean
 import com.gogoh5.apps.quanmaomao.library.entities.links.ProductLink
-import com.gogoh5.apps.quanmaomao.library.entities.links.WebLink
 import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 
 class ProductDetailPresenter(view: IProductDetailView) :
@@ -20,7 +17,6 @@ class ProductDetailPresenter(view: IProductDetailView) :
 
     var convertLink: String? = null
     var detailBean: ProductDetailBean? = null
-    var pid: String? = null
 
     override fun generateMethod(): ProductDetailMethod = ProductDetailMethod(this)
 
@@ -30,8 +26,6 @@ class ProductDetailPresenter(view: IProductDetailView) :
             view.closeDirectly()
             return
         }
-
-
 
         link = passLink
 
@@ -48,11 +42,12 @@ class ProductDetailPresenter(view: IProductDetailView) :
 
 
     override fun onLazyLoad() {
-        val detailLazyLoadBean: ProductDetailLazyLoadBean? = getLazyLoadParams(ProductDetailUI.LAZY_LOAD_DETAIL)
+        val detailLazyLoadBean = getLazyLoadParams(ProductDetailUI.LAZY_LOAD_DETAIL)
         if(detailLazyLoadBean != null) {
             if(detailLazyLoadBean.isSuccess()) {
-                detailBean = detailLazyLoadBean.productDetailBean
-                view.showContent(detailLazyLoadBean.productDetailBean!!)
+                val detailBean = detailLazyLoadBean.obj as ProductDetailBean
+                this.detailBean = detailBean
+                view.showContent(detailBean)
             }
             else view.showError()
         }
@@ -155,6 +150,6 @@ class ProductDetailPresenter(view: IProductDetailView) :
     }
 
     fun linkPreview(url: String, view: View) {
-        LinkUtils.linkPreview(url,context = view.context)
+        LinkUtils.linkPreview(url, view, context = view.context)
     }
 }

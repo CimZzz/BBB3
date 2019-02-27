@@ -86,6 +86,11 @@ class TouchableImageView: AppCompatImageView {
                         val distanceX = event.x - pointOne.x
                         val distanceY = event.y - pointOne.y
 
+                        if(onePointOnly) {
+                            if(Math.abs(distanceX) > 50 || Math.abs(distanceY) > 50)
+                                onePointOnly = false
+                        }
+
                         movePoint.x = curMoveX + distanceX
                         movePoint.y = curMoveY + distanceY
 
@@ -182,7 +187,7 @@ class TouchableImageView: AppCompatImageView {
             }
 
             MotionEvent.ACTION_UP -> {
-                if(onePointOnly && event.eventTime - event.downTime < 200) {
+                if(onePointOnly && event.eventTime - event.downTime < 100) {
                     performClick()
                 }
                 curMoveX = movePoint.x

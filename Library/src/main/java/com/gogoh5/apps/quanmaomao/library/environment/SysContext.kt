@@ -133,6 +133,8 @@ object SysContext {
         return AlibcLogin.getInstance().isLogin
     }
 
+    fun checkSDKVersion(code: Int): Boolean = Build.VERSION.SDK_INT >= code
+
     fun checkPermission(permission: String): Boolean {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return PermissionChecker.checkSelfPermission(SysContext.getApp(), permission) == PackageManager.PERMISSION_GRANTED

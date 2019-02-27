@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import com.gogoh5.apps.quanmaomao.library.environment.constants.RendererType
 import com.gogoh5.apps.quanmaomao.library.toolkits.LazyLoadToolkit
 
-class ListPageHeaderAdapter(private val listPageContext: ListPageContext<*>) : LazyLoadToolkit.Adapter() {
+class ListPageHeaderAdapter(private val listPageContext: ListPageContext) : LazyLoadToolkit.Adapter() {
     override val itemCount: Int
         get() =
             if(listPageContext.hasFilterBar())

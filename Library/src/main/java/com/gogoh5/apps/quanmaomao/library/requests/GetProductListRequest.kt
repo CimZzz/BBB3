@@ -3,8 +3,8 @@ package com.gogoh5.apps.quanmaomao.library.requests
 import com.alibaba.fastjson.JSONObject
 import com.gogoh5.apps.quanmaomao.library.base.BaseRequest
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.ListBean
-import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductBean
-import com.gogoh5.apps.quanmaomao.library.entities.databeans.parseProductBean
+import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductRenderer
+import com.gogoh5.apps.quanmaomao.library.entities.databeans.parseProductRenderer
 import com.gogoh5.apps.quanmaomao.library.environment.constants.Http
 import com.gogoh5.apps.quanmaomao.library.extensions.buildUrl
 import okhttp3.Request
@@ -13,8 +13,8 @@ import okhttp3.Response
 class GetProductListRequest(
     val uid: String,
     val page: Int,
-    val order: Int? = null,
     val k: String? = null,
+    val order: Int? = null,
     val startprice: Double? = null,
     val endprice: Double? = null,
     val isTmall: Boolean = true
@@ -41,11 +41,11 @@ class GetProductListRequest(
         val dataArr = result.getJSONArray("d")
         var isOver = result.getBooleanValue("isOver")
 
-        val productList = ArrayList<ProductBean>()
+        val productList = ArrayList<ProductRenderer>()
 
         if(dataArr != null) {
             dataArr.filterIsInstance(JSONObject::class.java).forEach {
-                val bean = parseProductBean(it)
+                val bean = parseProductRenderer(it)
                 if(bean != null)
                     productList.add(bean)
             }

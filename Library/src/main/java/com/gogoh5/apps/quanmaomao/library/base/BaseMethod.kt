@@ -28,6 +28,16 @@ abstract class BaseMethod<T: Any>(presenter: T) {
         callManager.addCall(position, SysContext.getHttp().enqueue(request))
     }
 
+
+    protected fun stopCall(position: Int) {
+        callManager.stopCall(position)
+    }
+
+    protected fun removeCall(position: Int) {
+        callManager.removeCall(position)
+    }
+
+
     protected open fun onDestroy() {
 
     }

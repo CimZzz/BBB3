@@ -91,7 +91,9 @@ class ListPageContentAdapter(private val listPageContext: ListPageContext) : Rec
         override fun bindBean() {
             when (listPageContext.listPageDataBundle.contentState) {
                 ListPage.CONTENT_LOAD -> viewHandler.showView(R.id.loading)
+                ListPage.CONTENT_LOADING -> viewHandler.showView(R.id.loading)
                 ListPage.CONTENT_OVER -> viewHandler.showView(R.id.over)
+                ListPage.CONTENT_EMPTY -> viewHandler.showView(R.id.empty)
                 ListPage.CONTENT_FAILED -> {
                     viewHandler.showView(R.id.error)?.tapWith {
                         viewHandler.showView(R.id.loading)

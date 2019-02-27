@@ -4,14 +4,12 @@ import com.gogoh5.apps.quanmaomao.android.R
 import com.gogoh5.apps.quanmaomao.library.base.BaseUI
 import com.gogoh5.apps.quanmaomao.library.environment.constants.ActionSource
 import com.gogoh5.apps.quanmaomao.library.extended.listview.ListPage
-import com.gogoh5.apps.quanmaomao.library.extended.listview.ListPageDataBundle
-import com.gogoh5.apps.quanmaomao.library.extensions.selectionEnd
 import com.gogoh5.apps.quanmaomao.library.extensions.tapWith
 import kotlinx.android.synthetic.main.ui_search.*
 
 class SearchUI: BaseUI<SearchPresenter>(), ISearchView, SearchListContext.Callback {
 
-    private lateinit var listPage: ListPage<ListPageDataBundle>
+    private lateinit var listPage: ListPage
     private lateinit var pageContext: SearchListContext
 
     override fun initPresenter(): SearchPresenter = SearchPresenter(this)

@@ -7,8 +7,7 @@ import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
 
 open class ListPageDataBundle() : Parcelable {
 
-    internal var state = ListPage.STATE_LOADING
-    internal var contentState = ListPage.CONTENT_LOAD
+    internal var contentState = ListPage.CONTENT_LOADING
     internal var isContentLoading : Boolean = false
 
     internal var pageNum = 0

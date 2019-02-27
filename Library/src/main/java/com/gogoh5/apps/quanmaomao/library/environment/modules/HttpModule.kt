@@ -5,10 +5,7 @@ import com.gogoh5.apps.quanmaomao.library.base.BaseRequest
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.InitBean
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext
 import com.gogoh5.apps.quanmaomao.library.requests.InitMobileRequest
-import com.gogoh5.apps.quanmaomao.library.toolkits.DataHunter
-import com.gogoh5.apps.quanmaomao.library.toolkits.SyncCode
-import com.gogoh5.apps.quanmaomao.library.toolkits.SyncRule
-import com.gogoh5.apps.quanmaomao.library.toolkits.SyncRuleGroup
+import com.gogoh5.apps.quanmaomao.library.toolkits.*
 import okhttp3.Call
 import okhttp3.OkHttpClient
 import java.util.*
@@ -58,7 +55,7 @@ class HttpModule private constructor(): BaseModule() {
 
             val user = SysContext.getUser()
             val initRequest = InitMobileRequest(user.uid, user.sex, user.createTime)
-                .dataHunter(DataHunter(this, isMainThread = false, syncRuleGroup = SyncRuleGroup(arrayOf(SyncRule(initSyncCode.nextCode(), initSyncCode)))) {
+                .dataHunter(DataHunter(this, isMainThread = false, syncRuleGroup = syncGroupOf(SyncRule(initSyncCode.nextCode(), initSyncCode))) {
                     module, params->
                     val result = params[0] as Boolean
                     if(result)

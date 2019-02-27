@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference
  *  Project : taoke_android
  *  Since Version : Alpha
  */
-class ListPageViewCallback(listPageContext: ListPageContext<*>, private val prefix: String = "") {
+class ListPageViewCallback(listPageContext: ListPageContext, private val prefix: String = "") {
 
     private val contentRef = WeakReference(listPageContext)
 

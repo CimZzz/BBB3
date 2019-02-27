@@ -25,9 +25,8 @@ import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
  *  Project : taoke_android
  *  Since Version : Alpha
  */
-abstract class DefaultListPageContext(context: Context? = null) : ListPageContext<ListPageDataBundle>(context) {
-    val isExistFilterBar: Boolean
-        get() = false
+abstract class DefaultListPageContext(context: Context? = null) : ListPageContext(context) {
+    override val isExistFilterBar: Boolean = false
     override val isContentOnly: Boolean = true
     override val isHeaderOnly: Boolean = false
     override val isAutoHeaderOffset: Boolean = false
@@ -66,7 +65,7 @@ abstract class DefaultListPageContext(context: Context? = null) : ListPageContex
             override fun onDrawOver(canvas: Canvas?, parent: RecyclerView?, state: RecyclerView.State?) {
                 super.onDrawOver(canvas, parent, state)
                 if(canvas == null || parent == null)
-                    return;
+                    return
                 (0 until parent.childCount).map { parent.getChildAt(it) }.forEach {
                     val position = parent.getChildAdapterPosition(it)
                     if (position > 0)
@@ -127,7 +126,7 @@ abstract class DefaultListPageContext(context: Context? = null) : ListPageContex
     override fun generateDataBundle(): ListPageDataBundle = ListPageDataBundle()
 
 
-    override fun generateBrandRequest(): BaseRequest<*> = BaseRequest.EMPTY
+    override fun generateHeaderRequest(): BaseRequest<*>? = null
     override fun onHeaderResult(params: Array<out Any>): List<BaseRenderer>? = null
 
 

@@ -29,20 +29,18 @@ class CashListPageContext(context: Context): DefaultListPageContext(context) {
     override val contentCreatorList: Array<IListPageContentCreator>
         get() = arrayOf(DetailContentCreator)
 
-    val defaultTopHeaderRenderer: Array<out BaseRenderer>?
+    override val defaultTopHeaderRenderer: Array<out BaseRenderer>?
         get() = arrayOf(CashHeadRenderer())
 
-    override fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*> =
+
+    override fun generateContentRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>? =
         GetCashListRequest(SysContext.getUser().uid, pageNum)
 
-    override fun onContentResult(pageNum: Int, params: Array<out Any>): Pair<List<BaseRenderer>?, Boolean> {
 
-        if(params[0] as Boolean) {
-            val listBean = params[1] as ListBean
-            return Pair(listBean.list as List<BaseRenderer>, listBean.over)
-        }
-
-        return Pair(null, false)
+    override fun onContentResult(pageNum: Int, isInit: Boolean, params: Array<out Any>): ListBean? {
+        if(params[0] as Boolean)
+            return params[1] as ListBean
+        return null
     }
 
     override fun generateBottomStateBar(parent: ViewGroup): ViewHandler? {
@@ -51,7 +49,7 @@ class CashListPageContext(context: Context): DefaultListPageContext(context) {
         handler?.viewVisibleCallback = {
             view, id, state ->
             when(id) {
-                R.id.over -> {
+                R.id.empty -> {
                     if(state == View.VISIBLE) {
                         view.setMargin(top = SysContext.dp2px(25))
                         (view as TextView).text = "您还没有任何提现记录，快去下单获得返利吧!"

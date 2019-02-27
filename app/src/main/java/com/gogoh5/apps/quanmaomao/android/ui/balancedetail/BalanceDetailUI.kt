@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.ui_balance_detail.*
 
 class BalanceDetailUI: BaseUI<BalanceDetailPresenter>(), IBalanceDetailView {
 
-    private lateinit var listPage: ListPage<ListPageDataBundle>
+    private lateinit var listPage: ListPage
     private lateinit var pageContext: BalanceListContext
 
 

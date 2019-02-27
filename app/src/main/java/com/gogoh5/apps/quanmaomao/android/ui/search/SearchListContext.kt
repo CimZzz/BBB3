@@ -26,11 +26,11 @@ class SearchListContext(context: Context? = null, val callback: Callback): Produ
         return ProductFilterBar(parent, true)
     }
 
-    override fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*> =
-            GetProductListRequest(SysContext.getUser().uid,
-                pageNum,
-                order = if(isInit) 0 else getVariableValue(ProductFilterBar.KEY_ORDER)?:0,
-                k = getConfigValue(KEY_WORD))
+    override fun generateContentRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>? =
+        GetProductListRequest(SysContext.getUser().uid,
+            pageNum,
+            order = if(isInit) 0 else getVariableValue(ProductFilterBar.KEY_ORDER)?:0,
+            k = getConfigValue(KEY_WORD))
 
     fun configSearchContent(searchContent: String?) {
         setConfigValue(KEY_WORD, searchContent)

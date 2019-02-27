@@ -1,9 +1,10 @@
 package com.gogoh5.apps.quanmaomao.library.entities.databeans
 
 import com.alibaba.fastjson.JSONObject
+import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
 import java.io.Serializable
 
-data class ProductBean(
+data class ProductRenderer(
     val GoodsID: String,
     val Title: String,
     val D_title: String,
@@ -24,23 +25,29 @@ data class ProductBean(
     val shopName_s: String,
     val shopIcon_s: String,
     val reward: Double = 0.0,
+    val afterRewardPrice: Double = 0.0,
     val IsTmall: Boolean
-): Serializable {
+): BaseRenderer() {
 
 }
 
-fun parseProductBean(obj: JSONObject?): ProductBean? {
+fun parseProductRenderer(obj: JSONObject?): ProductRenderer? {
     if(obj == null)
         return null
 
-    return ProductBean(
+    val price = obj.getDouble("Price")?:return null
+    val rewardPrice = obj.getDoubleValue("reward")
+    val afterRewardPrice = price - rewardPrice
+
+
+    return ProductRenderer(
         GoodsID = obj.getString("GoodsID")?:return null,
         Title = obj.getString("Title")?:return null,
         D_title = obj.getString("D_title")?:return null,
         Pic = obj.getString("Pic")?:return null,
         sourceType = obj.getInteger("sourceType")?:return null,
         Org_Price = obj.getDoubleValue("Org_Price"),
-        Price = obj.getDoubleValue("Price"),
+        Price = price,
         Quan_price = obj.getDoubleValue("Quan_price"),
         Quan_time = obj.getLongValue("Quan_time"),
         Quan_link = obj.getString("Quan_link")?:"",
@@ -53,7 +60,8 @@ fun parseProductBean(obj: JSONObject?): ProductBean? {
         shopId_s = obj.getString("shopId_s")?:"",
         shopName_s = obj.getString("shopName_s")?:"",
         shopIcon_s = obj.getString("shopIcon_s")?:"",
-        reward = obj.getDoubleValue("reward"),
+        reward = rewardPrice,
+        afterRewardPrice = afterRewardPrice,
         IsTmall = obj.getIntValue("IsTmall") == 1
     )
 }

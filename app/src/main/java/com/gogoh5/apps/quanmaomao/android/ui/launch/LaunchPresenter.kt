@@ -14,8 +14,8 @@ class LaunchPresenter(view: ILaunchView) : BaseMethodPresenter<ILaunchView, Laun
     }
 
     override fun onLazyLoad() {
-        getLazyLoadParams<BaseLazyLoadBean>(LaunchUI.LAZY_LOAD_TIME_OUT)?:return
-        getLazyLoadParams<BaseLazyLoadBean>(LaunchUI.LAZY_LOAD_PERMISSION)?:return
+        getLazyLoadParams(LaunchUI.LAZY_LOAD_TIME_OUT)?:return
+        getLazyLoadParams(LaunchUI.LAZY_LOAD_PERMISSION)?:return
 
         LinkUtils.linkMain(context = view.getContext())
         view.closeDirectly()

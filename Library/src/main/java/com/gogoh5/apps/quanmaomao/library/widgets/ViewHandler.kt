@@ -72,16 +72,18 @@ class ViewHandler : ConstraintLayout {
             else {
                 if(it.tag == "EXIST") {
                     it.visibility = View.INVISIBLE
-                    viewVisibleCallback?.let {
-                        runnable->
-                        runnable(it, layoutId, View.INVISIBLE)
+                    if(it !is ViewStub) {
+                        viewVisibleCallback?.let { runnable ->
+                            runnable(it, layoutId, View.INVISIBLE)
+                        }
                     }
                 }
                 else {
                     it.visibility = View.GONE
-                    viewVisibleCallback?.let {
-                        runnable->
-                        runnable(it, layoutId, View.GONE)
+                    if(it !is ViewStub) {
+                        viewVisibleCallback?.let { runnable ->
+                            runnable(it, layoutId, View.GONE)
+                        }
                     }
                 }
 

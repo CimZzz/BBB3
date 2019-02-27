@@ -21,4 +21,8 @@ class PreviewUI: BaseUI<PreviewPresenter>(), IPreviewView {
     override fun showImage(url: String) {
         SysContext.getGlide().loadNetPicDirectly(url, previewImg)
     }
+
+    override fun closeDirectly() {
+        supportFinishAfterTransition()
+    }
 }

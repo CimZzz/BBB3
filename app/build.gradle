@@ -3,3 +3,7 @@ android {
         applicationId "com.gogoh5.apps.quanmaomao.android"
     }
 }
+
+dependencies {
+    implementation project(':Test')
+}

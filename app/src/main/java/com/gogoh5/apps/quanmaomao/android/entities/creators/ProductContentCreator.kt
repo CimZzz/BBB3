@@ -2,8 +2,8 @@ package com.gogoh5.apps.quanmaomao.android.entities.creators
 
 import android.view.ViewGroup
 import com.gogoh5.apps.quanmaomao.android.entities.holders.ProductHolder
-import com.gogoh5.apps.quanmaomao.android.entities.renderers.ProductRenderer
 import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
+import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductRenderer
 import com.gogoh5.apps.quanmaomao.library.environment.constants.RendererType
 import com.gogoh5.apps.quanmaomao.library.extended.listview.IListPageContentCreator
 import com.gogoh5.apps.quanmaomao.library.extended.listview.ListPageBaseContentHolder

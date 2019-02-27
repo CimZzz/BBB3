@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.view.View
 import com.gogoh5.apps.quanmaomao.library.base.BaseLink
 
@@ -18,8 +19,14 @@ class PreviewLink(
     override fun doPerform(context: Context) {
         val intent = Intent(context, Class.forName( "com.gogoh5.apps.quanmaomao.android.ui.preview.PreviewUI"))
         processIntent(intent, context)
-        if(context is Activity && transitionView != null)
-            ContextCompat.startActivity(context, intent, ActivityOptionsCompat.makeSceneTransitionAnimation(context, transitionView, "previewImg").toBundle())
+        if(context is Activity && transitionView != null) {
+            ViewCompat.setTransitionName(transitionView, "previewImg")
+            ContextCompat.startActivity(
+                context,
+                intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(context, transitionView, "previewImg").toBundle()
+            )
+        }
         else context.startActivity(intent)
     }
 }

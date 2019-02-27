@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.gogoh5.apps.quanmaomao.library.base.BaseRequest
 import com.gogoh5.apps.quanmaomao.library.base.BaseLink
 import com.gogoh5.apps.quanmaomao.library.base.BaseRenderer
+import com.gogoh5.apps.quanmaomao.library.entities.databeans.ListBean
 import com.gogoh5.apps.quanmaomao.library.widgets.ScrollCoordinateLayout
 import com.gogoh5.apps.quanmaomao.library.widgets.ViewHandler
 import java.lang.ref.WeakReference
@@ -33,6 +34,7 @@ abstract class ListPageContext(context: Context? = null) {
     /*配置开关*/
     open val isHeaderOnly: Boolean = false
     open val isContentOnly: Boolean = false
+    open val isUnionRequest: Boolean = false
     abstract val isDependentContentRequest: Boolean
     abstract val isExistContentBottom: Boolean
     abstract val isExistFilterBar: Boolean
@@ -43,6 +45,11 @@ abstract class ListPageContext(context: Context? = null) {
 
     /*生命周期*/
     abstract fun generateDataBundle() : ListPageDataBundle
+
+    open fun buildViewHandler(viewHandler: ViewHandler) {
+
+    }
+
     open fun buildContentList(recyclerView: RecyclerView) {
 
     }
@@ -81,43 +88,48 @@ abstract class ListPageContext(context: Context? = null) {
 
     abstract fun onCheckPreload(position: Int, totalCount: Int) : Boolean
 
+    /*请求方法*/
+    abstract fun generateHeaderRequest(): BaseRequest<*>?
+    abstract fun onHeaderResult(params: Array<out Any>): List<BaseRenderer>?
+
+    abstract fun generateContentRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>?
+    abstract fun onContentResult(pageNum: Int, isInit: Boolean, params: Array<out Any>): ListBean?
+    open fun onContentFilter(rendererList: List<BaseRenderer>?): List<BaseRenderer>? = rendererList
+
     /*包装方法*/
 
     internal fun isAutoHeaderOffset() = !isContentOnly && (isAutoHeaderOffset || isHeaderOnly)
 
     internal fun hasFilterBar() = isExistFilterBar && !isHeaderOnly
 
+    internal fun reloadPage() {
+        listPagePresenter.requestPage(listPageDataBundle.pageNum + 1)
+    }
+
     fun getContext(): Context? = contextRef.get()
 
-
     fun collapseHeader(collapseHeader: Boolean, animate: Boolean) {
-        if(listPageDataBundle.state == ListPage.STATE_CONTENT)
+        if(listPagePresenter.markDone)
             listPageView.collapseHeader(collapseHeader, animate)
     }
 
     fun attachFilterWindow() {
-        if(listPageDataBundle.state == ListPage.STATE_CONTENT) {
+        if(listPagePresenter.markDone)
             collapseHeader(true, false)
             listPageView.attachFilterWindow()
-        }
     }
 
     fun detachFilterWindow() {
-        if(listPageDataBundle.state == ListPage.STATE_CONTENT) {
+        if(listPagePresenter.markDone)
             listPageView.detachFilterWindow()
-        }
-    }
-
-    fun refreshAll(isForce: Boolean = true) {
-        listPagePresenter.refreshAll(isForce)
     }
 
     fun refreshContent() {
         listPagePresenter.requestPage(0)
     }
 
-    fun reloadPage() {
-        listPagePresenter.requestPage(listPageDataBundle.pageNum + 1)
+    fun refreshAll(isForce: Boolean = true) {
+        listPagePresenter.refreshAll(isForce)
     }
 
     inline fun <reified T> getVariableValue(key: String, defaultValue: T? = null): T? = listPageDataBundle.getVariable(key, defaultValue) as T
@@ -125,9 +137,4 @@ abstract class ListPageContext(context: Context? = null) {
 
     inline fun <reified T> getConfigValue(key: String, defaultValue: T? = null): T? = listPageDataBundle.getConfig(key, defaultValue) as T
     fun setConfigValue(key: String, any: Any?) = listPageDataBundle.setConfig(key, any)
-
-    abstract fun generateBrandRequest() : BaseRequest<*>
-    abstract fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>
-    abstract fun onHeaderResult(params: Array<out Any>): List<BaseRenderer>?
-    abstract fun onContentResult(pageNum: Int, params: Array<out Any>): Pair<List<BaseRenderer>?, Boolean>
 }

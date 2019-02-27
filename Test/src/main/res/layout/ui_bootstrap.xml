@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/lightGreyColor">
+
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/actionBarContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/actionBarHeight"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingLeft="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingRight="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
+            android:background="@color/whiteColor">
+
+        <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="测试首页"
+                android:textSize="@dimen/text_middle"
+                android:textColor="@color/blackColor"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+            android:id="@+id/splitLine"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/actionBarContainer"
+            android:background="@color/lightGreyColor"/>
+    
+    
+    <LinearLayout
+        android:id="@+id/permissionContainer"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/configHeight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splitLine"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/whiteColor">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_weight="1"
+            android:text="悬浮窗权限(测试必须)"
+            android:textColor="@color/blackColor"/>
+        
+        <TextView
+            android:id="@+id/permissionStatusTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未拥有"
+            android:textSize="@dimen/text_small"/>
+        
+        <TextView
+            android:id="@+id/permissionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="1.5dp"
+            android:paddingBottom="1.5dp"
+            android:text="去获取"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/blackColor"
+            android:background="@drawable/bg_btn"/>
+    
+    
+    </LinearLayout>
+    
+    <com.gogoh5.apps.quanmaomao.library.widgets.ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/permissionContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
+        
+        <LinearLayout
+            android:id="@+id/configContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+        </LinearLayout>
+        
+    </com.gogoh5.apps.quanmaomao.library.widgets.ScrollView>
+
+</android.support.constraint.ConstraintLayout>

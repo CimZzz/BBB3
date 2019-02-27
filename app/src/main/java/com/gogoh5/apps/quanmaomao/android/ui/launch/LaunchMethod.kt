@@ -1,6 +1,5 @@
 package com.gogoh5.apps.quanmaomao.android.ui.launch
 
-import com.gogoh5.apps.quanmaomao.android.entities.lazyloadbeen.EmptyLazyLoadBean
 import com.gogoh5.apps.quanmaomao.library.base.BaseLazyLoadBean
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethod
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext

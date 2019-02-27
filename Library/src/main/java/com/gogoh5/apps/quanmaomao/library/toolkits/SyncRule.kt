@@ -1,7 +1,7 @@
 package com.gogoh5.apps.quanmaomao.library.toolkits
 
 data class SyncRuleGroup(
-    private val ruleGroup: Array<SyncRule>
+    private val ruleGroup: Array<out SyncRule>
 ) {
 
     fun checkNotSync(): Boolean {
@@ -31,5 +31,9 @@ data class SyncRule(
         TYPE_REOCRD_CODE -> codeObj.checkRecordCode(code)
         else -> codeObj.checkCode(code)
     }
+}
 
+
+fun syncGroupOf(vararg rules: SyncRule): SyncRuleGroup {
+    return SyncRuleGroup(rules)
 }

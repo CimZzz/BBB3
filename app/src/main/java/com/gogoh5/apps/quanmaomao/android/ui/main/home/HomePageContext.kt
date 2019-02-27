@@ -19,15 +19,15 @@ class HomePageContext(context: Context, val callback: Callback): ProductListPage
     override val headerCreatorList: Array<IListPageHeaderCreator>
         get() = arrayOf(HomeHeaderCreator, ProducHeaderCreator)
 
-    val defaultTopHeaderRenderer: Array<out BaseRenderer>?
+    override val defaultTopHeaderRenderer: Array<out BaseRenderer>?
         get() = arrayOf(HomeHeadRenderer(), HotSearchRenderer())
 
     override val isContentOnly: Boolean
         get() = true
 
 
-    override fun generateBrandListRequest(pageNum: Int, isInit: Boolean): BaseRequest<*> =
-        GetProductListRequest(SysContext.getUser().uid, pageNum, getConfigValue(KEY_WORD))
+    override fun generateContentRequest(pageNum: Int, isInit: Boolean): BaseRequest<*>? =
+        GetProductListRequest(SysContext.getUser().uid, pageNum, k = getConfigValue(KEY_WORD))
 
 
     override fun onEvent(viewType: Int, vararg params: Any?) {

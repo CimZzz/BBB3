@@ -1,7 +1,7 @@
 package com.gogoh5.apps.quanmaomao.android.ui.productdetail
 
 import com.alibaba.baichuan.trade.biz.login.AlibcLogin
-import com.gogoh5.apps.quanmaomao.android.entities.lazyloadbeen.ProductDetailLazyLoadBean
+import com.gogoh5.apps.quanmaomao.library.base.BaseLazyLoadBean
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethod
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.AliScAuthBean
 import com.gogoh5.apps.quanmaomao.library.entities.databeans.ProductDetailBean
@@ -36,9 +36,9 @@ class ProductDetailMethod(productDetailPresenter: ProductDetailPresenter) : Base
                 presenter, params->
                 if(params[0] as Boolean)
                     presenter.putLazyLoadParams(ProductDetailUI.LAZY_LOAD_DETAIL,
-                        ProductDetailLazyLoadBean(params[1] as ProductDetailBean).buildSuccess())
+                        BaseLazyLoadBean(params[1] as ProductDetailBean).buildSuccess())
                 else presenter.putLazyLoadParams(ProductDetailUI.LAZY_LOAD_DETAIL,
-                        ProductDetailLazyLoadBean(null).buildFailure())
+                    BaseLazyLoadBean().buildFailure())
             })
         )
     }
