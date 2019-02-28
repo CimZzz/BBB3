@@ -2,6 +2,9 @@ package com.gogoh5.apps.quanmaomao.library.environment
 
 import android.Manifest
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
@@ -17,6 +20,7 @@ import com.alibaba.baichuan.trade.biz.login.AlibcLogin
 import com.gogoh5.apps.quanmaomao.library.environment.modules.*
 import com.gogoh5.apps.quanmaomao.library.events.DefaultEventFactory
 import com.gogoh5.apps.quanmaomao.library.interfaces.IFactory
+import java.lang.Exception
 
 object SysContext {
     fun getActionFactory(): IFactory = DefaultEventFactory
@@ -127,6 +131,32 @@ object SysContext {
             setting.javaScriptEnabled = true
             setting.javaScriptCanOpenWindowsAutomatically = true
         }
+    }
+
+    fun copy(txt: String?): Boolean {
+        try {
+
+            val clipBoardManager = SysContext.getApp().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clipBoardManager.primaryClip = ClipData.newPlainText(null, txt)
+            return true
+        }
+        catch (e: Exception) {
+
+        }
+        return false
+    }
+
+    fun paste(): String? {
+        try {
+            val clipBoardManager = SysContext.getApp().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            if(clipBoardManager.primaryClip != null) {
+                return clipBoardManager.primaryClip.getItemAt(0).text.toString()
+            }
+        }
+        catch (e: Exception) {
+
+        }
+        return null
     }
 
     fun checkAliAuth(): Boolean {

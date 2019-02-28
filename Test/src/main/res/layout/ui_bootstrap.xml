@@ -19,6 +19,19 @@
             android:paddingRight="@dimen/margin_small"
             android:paddingEnd="@dimen/margin_small"
             android:background="@color/whiteColor">
+        
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/actionBarIconSize"
+            android:layout_height="@dimen/actionBarIconSize"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="10dp"
+            android:src="@drawable/icon_back_1"/>
+        
 
         <TextView
                 android:id="@+id/titleTxt"
@@ -105,6 +118,128 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarItemHeight"
+                android:paddingLeft="@dimen/margin_small"
+                android:paddingRight="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/whiteColor">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="uid:"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"/>
+                
+                <EditText
+                    android:id="@+id/uidContentTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:hint="暂无"
+                    android:textSize="@dimen/text_small"
+                    android:textColorHint="@color/greyColor"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@null"/>
+                
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarItemHeight"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end"
+                android:background="@color/whiteColor">
+    
+                <TextView
+                    android:id="@+id/uidClearBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="清空"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+                
+                <TextView
+                    android:id="@+id/uidResetBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="重置"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+                
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+    
+    
+                <TextView
+                    android:id="@+id/uidCopyBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="复制"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+    
+                <TextView
+                    android:id="@+id/uidPasteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="粘贴"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+    
+                <TextView
+                    android:id="@+id/uidUpdateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="修改"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+            </LinearLayout>
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/lightGreyColor"/>
             
         </LinearLayout>
         

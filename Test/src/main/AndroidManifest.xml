@@ -4,7 +4,15 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     
     <application>
-
+    
+        <activity android:name=".uis.bootstraip.BootstrapUI" android:theme="@style/NoTitleBarStyle" android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+        <service android:name=".services.TestService"/>
     </application>
 
 </manifest>
