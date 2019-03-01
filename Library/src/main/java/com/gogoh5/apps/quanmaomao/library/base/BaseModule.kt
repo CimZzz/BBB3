@@ -8,4 +8,5 @@ abstract class BaseModule {
 
     protected fun getSharePreferences(spName: String): SharedPreferences =
             SysContext.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE)
+
 }

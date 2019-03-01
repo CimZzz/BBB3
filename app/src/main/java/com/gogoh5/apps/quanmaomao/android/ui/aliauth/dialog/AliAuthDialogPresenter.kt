@@ -2,6 +2,7 @@ package com.gogoh5.apps.quanmaomao.android.ui.aliauth.dialog
 
 import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
+import com.gogoh5.apps.quanmaomao.library.environment.SysContext
 import com.gogoh5.apps.quanmaomao.library.environment.constants.Http
 import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 
@@ -45,5 +46,7 @@ class AliAuthDialogPresenter(view: IAliAuthDialogView) : BaseMethodPresenter<IAl
 
     fun linkMain() {
         LinkUtils.linkMain(isClose = true, context = view.getContext())
+        view.closeDirectly()
+        SysContext.quitApp(200)
     }
 }

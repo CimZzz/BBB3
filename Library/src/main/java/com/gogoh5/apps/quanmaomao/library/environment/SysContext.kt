@@ -20,6 +20,7 @@ import com.alibaba.baichuan.trade.biz.login.AlibcLogin
 import com.gogoh5.apps.quanmaomao.library.environment.modules.*
 import com.gogoh5.apps.quanmaomao.library.events.DefaultEventFactory
 import com.gogoh5.apps.quanmaomao.library.interfaces.IFactory
+import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 import java.lang.Exception
 
 object SysContext {
@@ -35,7 +36,6 @@ object SysContext {
     fun getData(): DataModule = DataModule.instance
     fun getBus(): BusModule = BusModule.instance
     fun getFile(): FileModule = FileModule.instance
-
 
 
     fun getResources() = getApp().resources!!
@@ -169,5 +169,19 @@ object SysContext {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return PermissionChecker.checkSelfPermission(SysContext.getApp(), permission) == PackageManager.PERMISSION_GRANTED
         else return ContextCompat.checkSelfPermission(SysContext.getApp(), permission) == PackageManager.PERMISSION_GRANTED
+    }
+
+
+
+    /*App Method*/
+
+    fun quit() {
+        LinkUtils.linkMain(isClose = true)
+    }
+
+    fun quitApp(delay: Long = 0) {
+        getThread().post(delay) {
+            Runtime.getRuntime().exit(0)
+        }
     }
 }

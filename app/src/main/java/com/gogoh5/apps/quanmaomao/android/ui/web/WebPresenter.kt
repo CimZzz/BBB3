@@ -28,6 +28,7 @@ class WebPresenter(view: IWebView) :
 
         when(link.aliPage) {
             WebLink.PAGE_ORDER -> view.showAliOrder(method.getPid())
+            WebLink.PAGE_CART -> view.showAliCart(method.getPid())
             else -> view.showUrl(link.url, link.useAliTrade, method.getPid())
         }
     }

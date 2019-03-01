@@ -15,6 +15,10 @@ import com.gogoh5.apps.quanmaomao.library.environment.SysContext
  *  Since Version : Alpha
  */
 object LinkUtils {
+    fun linkLaunch(context: Context? = null) {
+        run(LaunchLink(), context)
+    }
+
     fun linkMain(transferPage: Int? = null, isClose: Boolean? = null, context: Context? = null) {
         run(MainLink(transferPage, isClose), context)
     }
@@ -65,6 +69,14 @@ object LinkUtils {
         transitionView: View? = null,
         context: Context? = null) {
         run(PreviewLink(url, transitionView), context)
+    }
+
+    fun linkScheme(
+        scheme: String,
+        errorTxt: String? = null,
+        context: Context? = null
+    ) {
+        LinkUtils.run(SchemeLink(scheme, errorTxt), context)
     }
 
     fun run(

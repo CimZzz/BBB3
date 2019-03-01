@@ -5,6 +5,7 @@ import com.gogoh5.apps.quanmaomao.library.base.BaseModule
 import com.gogoh5.apps.quanmaomao.library.toolkits.HunterManager
 
 class BusModule private constructor(): BaseModule() {
+
     companion object {
         /**
          * isSuccess(Boolean) message(String?)

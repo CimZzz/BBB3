@@ -43,7 +43,4 @@ class DataModule private constructor(): BaseModule() {
         searchHistoryList = null
         searchHistoryArr = null
     }
-
-
-
 }

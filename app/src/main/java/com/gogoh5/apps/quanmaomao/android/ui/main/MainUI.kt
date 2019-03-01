@@ -71,23 +71,20 @@ class MainUI: BaseUI<MainPresenter>(), IMainView {
         checkBottomBar(bottomHomeContainer.id)
     }
 
-
-    override fun closeDirectly() {
-        super.finish()
-        SysContext.getThread().post {
-            Runtime.getRuntime().exit(0)
-        }
-    }
-
     override fun onBackPressed() {
 //        super.onBackPressed()
         val currentTime = SystemClock.elapsedRealtime()
         if(currentTime - lastBackTime < 800L) {
-            closeDirectly()
+            presenter.quitAll()
             return
         }
         else presenter.sendToast("再按一次退出券猫猫")
         lastBackTime = currentTime
+    }
+
+
+    override fun closeDirectly() {
+        super.finish()
     }
 
     override fun finish() {

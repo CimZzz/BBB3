@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gogoh5.apps.quanmaomao.library.widgets.FloatView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:padding="@dimen/margin_small"
+	android:background="@color/whiteColor">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="20dp"
+			android:gravity="center"
+			android:textSize="@dimen/text_small"
+			android:textColor="@color/blackColor"
+			android:text="拖动区域"/>
+		
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			
+			<Spinner
+				android:id="@+id/logTypeSpinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+			
+			
+			<View
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_weight="1"/>
+			
+			<TextView
+				android:id="@+id/alphaBtn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/margin_small"
+				android:layout_marginStart="@dimen/margin_small"
+				android:paddingRight="8dp"
+				android:paddingLeft="8dp"
+				android:paddingTop="1.5dp"
+				android:paddingBottom="1.5dp"
+				android:text="半透明"
+				android:textSize="@dimen/text_small"
+				android:textColor="@drawable/bg_txt"
+				android:background="@drawable/bg_btn"/>
+			
+			
+			<TextView
+				android:id="@+id/closeBtn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/margin_small"
+				android:layout_marginStart="@dimen/margin_small"
+				android:paddingRight="8dp"
+				android:paddingLeft="8dp"
+				android:paddingTop="1.5dp"
+				android:paddingBottom="1.5dp"
+				android:text="关闭日志面板"
+				android:textSize="@dimen/text_small"
+				android:textColor="@drawable/bg_txt"
+				android:background="@drawable/bg_btn"/>
+			
+			
+		</LinearLayout>
+		
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+			
+			<TextView
+				android:id="@+id/logContentTxt"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/text_small"
+				android:textColor="@color/blackColor"/>
+		</ScrollView>
+		
+	</LinearLayout>
+	
+</com.gogoh5.apps.quanmaomao.library.widgets.FloatView>

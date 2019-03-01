@@ -13,6 +13,7 @@ class HunterManager {
     }
 
     fun destroy() {
+        eatSwitch = true
         hunterMap.values.forEach {
             it.drop()
         }

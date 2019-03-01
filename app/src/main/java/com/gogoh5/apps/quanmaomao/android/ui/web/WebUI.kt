@@ -6,6 +6,7 @@ import com.alibaba.baichuan.android.trade.AlibcTradeSDK
 import com.alibaba.baichuan.android.trade.callback.AlibcTradeCallback
 import com.alibaba.baichuan.android.trade.model.AlibcShowParams
 import com.alibaba.baichuan.android.trade.model.OpenType
+import com.alibaba.baichuan.android.trade.page.AlibcMyCartsPage
 import com.alibaba.baichuan.android.trade.page.AlibcMyOrdersPage
 import com.alibaba.baichuan.android.trade.page.AlibcPage
 import com.alibaba.baichuan.trade.biz.context.AlibcTradeResult
@@ -112,6 +113,19 @@ class WebUI: BaseUI<WebPresenter>(),
         val taokeParams = AlibcTaokeParams()
         taokeParams.pid = pid
         AlibcTrade.show(this, viewHandler.content, webClient, chromeClient, AlibcMyOrdersPage(0, false), AlibcShowParams(OpenType.H5, false), taokeParams, null, object: AlibcTradeCallback {
+            override fun onFailure(p0: Int, p1: String?) {
+
+            }
+
+            override fun onTradeSuccess(p0: AlibcTradeResult?) {
+            }
+        })
+    }
+
+    override fun showAliCart(pid: String?) {
+        val taokeParams = AlibcTaokeParams()
+        taokeParams.pid = pid
+        AlibcTrade.show(this, viewHandler.content, webClient, chromeClient, AlibcMyCartsPage(), AlibcShowParams(OpenType.H5, false), taokeParams, null, object: AlibcTradeCallback {
             override fun onFailure(p0: Int, p1: String?) {
 
             }

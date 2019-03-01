@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<dimen name="configHeight">44dp</dimen>
+	<dimen name="bottomHeight">44dp</dimen>
+	<dimen name="configHeight">54dp</dimen>
 </resources>

@@ -7,6 +7,7 @@ import com.gogoh5.apps.quanmaomao.library.base.BaseMethodPresenter
 import com.gogoh5.apps.quanmaomao.library.base.BaseUI
 import com.gogoh5.apps.quanmaomao.library.base.MixDataBundle
 import com.gogoh5.apps.quanmaomao.library.entities.links.MainLink
+import com.gogoh5.apps.quanmaomao.library.environment.SysContext
 import com.gogoh5.apps.quanmaomao.library.utils.LinkUtils
 
 class MainPresenter(view: IMainView) : BaseMethodPresenter<IMainView, MainMethod>(view) {
@@ -15,7 +16,7 @@ class MainPresenter(view: IMainView) : BaseMethodPresenter<IMainView, MainMethod
     override fun generateMethod(): MainMethod = MainMethod(this)
 
     override fun onInitPresenter(mixDataBundle: MixDataBundle) {
-
+        newIntent(mixDataBundle.passIntent)
     }
 
     override fun newIntent(intent: Intent?) {
@@ -62,5 +63,10 @@ class MainPresenter(view: IMainView) : BaseMethodPresenter<IMainView, MainMethod
 
     fun refreshAll() {
         view.refreshAll()
+    }
+
+    fun quitAll() {
+        view.closeDirectly()
+        SysContext.quitApp(200)
     }
 }

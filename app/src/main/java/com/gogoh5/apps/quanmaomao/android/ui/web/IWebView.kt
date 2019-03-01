@@ -7,6 +7,7 @@ interface IWebView: IBaseUIView {
     fun lockTitle(title: String)
     fun configWebBridge(webBridge: WebViewBridge)
     fun showAliOrder(pid: String?)
+    fun showAliCart(pid: String?)
     fun showUrl(url: String, useAliTrade: Boolean, pid: String?)
     fun refresh()
 }

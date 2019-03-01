@@ -103,6 +103,15 @@
     
     
     </LinearLayout>
+	
+	<View
+		android:id="@+id/splitLine2"
+		android:layout_width="0dp"
+		android:layout_height="0.5dp"
+		android:background="@color/lightGreyColor"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/permissionContainer"/>
     
     <com.gogoh5.apps.quanmaomao.library.widgets.ScrollView
         android:id="@+id/scrollView"
@@ -110,15 +119,153 @@
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/permissionContainer"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/splitLine2"
+	    app:layout_constraintBottom_toTopOf="@+id/bottomContainer"
+	    android:overScrollMode="never"
+	    android:scrollbars="none">
         
         <LinearLayout
             android:id="@+id/configContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             android:orientation="vertical">
-
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="全部用户数据"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <View
+			        android:layout_width="0dp"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"/>
+		
+		        <TextView
+			        android:id="@+id/clearAllBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="清空"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+	
+	        </LinearLayout>
+	
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="系统设置页面"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <View
+			        android:layout_width="0dp"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"/>
+		
+		        <TextView
+			        android:id="@+id/settingBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="打开全部应用设置"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/settingSelfBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="打开自身设置"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+	
+	        </LinearLayout>
+	
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="触控悬浮球"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <View
+			        android:layout_width="0dp"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"/>
+		
+		        <com.suke.widget.SwitchButton
+			        android:id="@+id/floatSwitchBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"/>
+	
+	        </LinearLayout>
+	
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+    
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/actionBarItemHeight"
@@ -127,14 +274,14 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@color/whiteColor">
-                
+        
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="uid:"
                     android:textSize="@dimen/text_small"
                     android:textColor="@drawable/bg_txt"/>
-                
+        
                 <EditText
                     android:id="@+id/uidContentTxt"
                     android:layout_width="0dp"
@@ -149,16 +296,16 @@
                     android:textColorHint="@color/greyColor"
                     android:textColor="@drawable/bg_txt"
                     android:background="@null"/>
-                
+    
             </LinearLayout>
-            
+    
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/actionBarItemHeight"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|end"
                 android:background="@color/whiteColor">
-    
+        
                 <TextView
                     android:id="@+id/uidClearBtn"
                     android:layout_width="wrap_content"
@@ -172,7 +319,7 @@
                     android:textSize="@dimen/text_small"
                     android:textColor="@drawable/bg_txt"
                     android:background="@drawable/bg_btn"/>
-                
+        
                 <TextView
                     android:id="@+id/uidResetBtn"
                     android:layout_width="wrap_content"
@@ -186,13 +333,13 @@
                     android:textSize="@dimen/text_small"
                     android:textColor="@drawable/bg_txt"
                     android:background="@drawable/bg_btn"/>
-                
+        
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
-    
-    
+        
+        
                 <TextView
                     android:id="@+id/uidCopyBtn"
                     android:layout_width="wrap_content"
@@ -206,7 +353,7 @@
                     android:textSize="@dimen/text_small"
                     android:textColor="@drawable/bg_txt"
                     android:background="@drawable/bg_btn"/>
-    
+        
                 <TextView
                     android:id="@+id/uidPasteBtn"
                     android:layout_width="wrap_content"
@@ -220,7 +367,7 @@
                     android:textSize="@dimen/text_small"
                     android:textColor="@drawable/bg_txt"
                     android:background="@drawable/bg_btn"/>
-    
+        
                 <TextView
                     android:id="@+id/uidUpdateBtn"
                     android:layout_width="wrap_content"
@@ -235,14 +382,465 @@
                     android:textColor="@drawable/bg_txt"
                     android:background="@drawable/bg_btn"/>
             </LinearLayout>
-            
+    
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/lightGreyColor"/>
-            
+                android:layout_height="@dimen/margin_tiny"/>
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarItemHeight"
+                android:paddingLeft="@dimen/margin_small"
+                android:paddingRight="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/whiteColor">
+        
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Server Host:"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"/>
+        
+                <AutoCompleteTextView
+                    android:id="@+id/hostContentTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/margin_tiny"
+                    android:layout_marginRight="@dimen/margin_tiny"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:hint="服务器 Host"
+                    android:textSize="@dimen/text_small"
+                    android:textColorHint="@color/greyColor"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@null"/>
+    
+            </LinearLayout>
+    
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarItemHeight"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end"
+                android:background="@color/whiteColor">
+        
+                <TextView
+                    android:id="@+id/hostClearBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="清空"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+    
+                <TextView
+                    android:id="@+id/hostClearAllBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="清空历史"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+    
+                <TextView
+                    android:id="@+id/hostResetBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="重置"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+        
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+        
+        
+                <TextView
+                    android:id="@+id/hostCopyBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="复制"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+        
+                <TextView
+                    android:id="@+id/hostPasteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="粘贴"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+        
+                <TextView
+                    android:id="@+id/hostUpdateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_small"
+                    android:paddingRight="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="1.5dp"
+                    android:paddingBottom="1.5dp"
+                    android:text="修改"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@drawable/bg_txt"
+                    android:background="@drawable/bg_btn"/>
+            </LinearLayout>
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+	
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="通过App WebView 打开:"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <EditText
+			        android:id="@+id/urlContentTxt"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:layout_marginLeft="@dimen/margin_tiny"
+			        android:layout_marginRight="@dimen/margin_tiny"
+			        android:maxLines="1"
+			        android:inputType="text"
+			        android:hint="目标Url"
+			        android:textSize="@dimen/text_small"
+			        android:textColorHint="@color/greyColor"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@null"/>
+	
+	        </LinearLayout>
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical|end"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:id="@+id/urlClearBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="清空"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <View
+			        android:layout_width="0dp"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"/>
+		
+		
+		        <TextView
+			        android:id="@+id/urlCopyBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="复制"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/urlPasteBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="粘贴"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/urlOpenBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="打开URL"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/urlAliOpenBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="通过百川打开URL"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+	        </LinearLayout>
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+	
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="通过App 百川 WebView 打开:"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <Spinner
+			        android:id="@+id/aliPageSpinner"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:layout_marginLeft="@dimen/margin_tiny"
+			        android:layout_marginRight="@dimen/margin_tiny"
+			        android:maxLines="1"
+			        android:textSize="@dimen/text_small"
+			        android:textColorHint="@color/greyColor"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@null"/>
+	
+	        </LinearLayout>
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical|end"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:id="@+id/aliPageOpenBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:layout_marginStart="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="打开指定页"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+	        </LinearLayout>
+	
+	
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+	
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:paddingLeft="@dimen/margin_small"
+		        android:paddingRight="@dimen/margin_small"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="通过 URL Scheme 打开:"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"/>
+		
+		        <EditText
+			        android:id="@+id/schemeContentTxt"
+			        android:layout_width="0dp"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:layout_marginLeft="@dimen/margin_tiny"
+			        android:layout_marginRight="@dimen/margin_tiny"
+			        android:maxLines="1"
+			        android:inputType="text"
+			        android:hint="目标Scheme"
+			        android:textSize="@dimen/text_small"
+			        android:textColorHint="@color/greyColor"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@null"/>
+	
+	        </LinearLayout>
+	
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/actionBarItemHeight"
+		        android:orientation="horizontal"
+		        android:gravity="center_vertical|end"
+		        android:background="@color/whiteColor">
+		
+		        <TextView
+			        android:id="@+id/schemeClearBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="清空"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <View
+			        android:layout_width="0dp"
+			        android:layout_height="0dp"
+			        android:layout_weight="1"/>
+		
+		
+		        <TextView
+			        android:id="@+id/schemeCopyBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="复制"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/schemePasteBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="粘贴"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+		
+		        <TextView
+			        android:id="@+id/schemeOpenBtn"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/margin_small"
+			        android:paddingRight="8dp"
+			        android:paddingLeft="8dp"
+			        android:paddingTop="1.5dp"
+			        android:paddingBottom="1.5dp"
+			        android:text="打开Scheme"
+			        android:textSize="@dimen/text_small"
+			        android:textColor="@drawable/bg_txt"
+			        android:background="@drawable/bg_btn"/>
+	        </LinearLayout>
+	
+	        <View
+		        android:layout_width="match_parent"
+		        android:layout_height="@dimen/margin_tiny"/>
+
         </LinearLayout>
         
     </com.gogoh5.apps.quanmaomao.library.widgets.ScrollView>
+	
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/bottomContainer"
+		android:layout_width="0dp"
+		android:layout_height="@dimen/bottomHeight"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:background="@color/whiteColor">
+		
+		<TextView
+			android:id="@+id/enterBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent"
+			android:paddingRight="8dp"
+			android:paddingLeft="8dp"
+			android:paddingTop="1.5dp"
+			android:paddingBottom="1.5dp"
+			android:text="启动App"
+			android:textSize="@dimen/text_middle"
+			android:textColor="@drawable/bg_txt"
+			android:background="@drawable/bg_btn"/>
+	</android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

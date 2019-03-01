@@ -9,6 +9,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.FrameLayout
 import android.widget.Scroller
 import com.gogoh5.apps.quanmaomao.library.environment.SysContext
+import com.gogoh5.apps.quanmaomao.library.extensions.Run
 
 class FloatView: FrameLayout {
     private val TIME_SLOP: Long = 100
@@ -23,16 +24,12 @@ class FloatView: FrameLayout {
     private var marginX: Float = 0f
     private var marginY: Float = 0f
 
-    private var endX: Float = 0f
-    private var endY: Float = 0f
-
-    private var maximumX: Float = 0f
-    private var maximumY: Float = 0f
-
     private val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
-
     private val scroller: Scroller = Scroller(context, AccelerateDecelerateInterpolator())
+
+    var callback: Callback? = null
+    private var scrollOverRun: Run? = null
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -40,6 +37,8 @@ class FloatView: FrameLayout {
 
     override fun computeScroll() {
         if (scroller.computeScrollOffset()) {
+            if(scroller.isFinished)
+                scrollOverRun?.let { it() }
             moveTo(scroller.currX, scroller.currY)
             ViewCompat.postInvalidateOnAnimation(this)
         }
@@ -48,7 +47,8 @@ class FloatView: FrameLayout {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                scroller.abortAnimation()
+                forceStop()
+                callback?.onTouched()
                 isTouching = true
                 lastMotionX = event.rawX
                 lastMotionY = event.rawY
@@ -81,13 +81,13 @@ class FloatView: FrameLayout {
                 val screenWidth = SysContext.getScreenWidth()
                 val screenHeight = SysContext.getScreenHeight()
                 if(nextX > screenWidth / 2)
-                    nextX = screenWidth - marginX
+                    nextX = screenWidth - width - marginX
                 else nextX = marginX
 
                 if(nextY < marginY)
                     nextY = marginY
-                else if(nextY > screenHeight - marginY)
-                    nextY = screenHeight - marginY
+                else if(nextY > screenHeight - height - marginY)
+                    nextY = screenHeight - height - marginY
 
                 scrollTo(nextX, nextY)
             }
@@ -95,11 +95,52 @@ class FloatView: FrameLayout {
         return true
     }
 
+    fun forceStop() {
+        scroller.abortAnimation()
+        this.scrollOverRun = null
+    }
+
     fun moveTo(x: Int, y: Int) {
         val layoutParams = this.layoutParams as WindowManager.LayoutParams
         layoutParams.x = x
         layoutParams.y = y
         windowManager.updateViewLayout(this, layoutParams)
+    }
+
+    fun scrollToCenter(callback: Run? = null) {
+        val screenWidth = SysContext.getScreenWidth()
+        val screenHeight = SysContext.getScreenHeight()
+        val endX = screenWidth / 2 - width / 2
+        val endY = screenHeight / 2 - height / 2
+
+
+        val layoutParams = this.layoutParams as WindowManager.LayoutParams
+        scroller.startScroll(layoutParams.x, layoutParams.y, (endX - layoutParams.x).toInt(), (endY - layoutParams.y).toInt())
+        ViewCompat.postInvalidateOnAnimation(this)
+    }
+
+    fun scrollToRightBottom(offsetX: Float? = null, offsetY: Float? = null, callback: Run? = null) {
+        if(isTouching)
+            return
+
+        this.scrollOverRun = callback
+        val screenWidth = SysContext.getScreenWidth()
+        val screenHeight = SysContext.getScreenHeight()
+        var endX = screenWidth - width - marginX - (offsetX?:0f)
+        var endY = screenHeight - height - marginY - (offsetY?:0f)
+
+        if(endX > screenWidth / 2)
+            endX = screenWidth - width - marginX
+        else endX = marginX
+
+        if(endY < marginY)
+            endY = marginY
+        else if(endY > screenHeight - height - marginY)
+            endY = screenHeight - height - marginY
+
+        val layoutParams = this.layoutParams as WindowManager.LayoutParams
+        scroller.startScroll(layoutParams.x, layoutParams.y, (endX - layoutParams.x).toInt(), (endY - layoutParams.y).toInt())
+        ViewCompat.postInvalidateOnAnimation(this)
     }
 
     fun scrollTo(x: Float, y: Float) {
@@ -110,4 +151,8 @@ class FloatView: FrameLayout {
         ViewCompat.postInvalidateOnAnimation(this)
     }
 
+
+    interface Callback {
+        fun onTouched()
+    }
 }

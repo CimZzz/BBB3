@@ -40,6 +40,10 @@ class ThreadModule internal constructor() {
         else handler.sendMessageDelayed(msg, delay)
     }
 
+    fun sendRunnable(runnable: Run) {
+        threadPool.execute(runnable)
+    }
+
     fun sendRunnableWithHunter(dataHunter: RefDataHunter<*>, runnable: GetResultNotNull<out Any>) {
         threadPool.execute {
             dataHunter.eat(runnable())

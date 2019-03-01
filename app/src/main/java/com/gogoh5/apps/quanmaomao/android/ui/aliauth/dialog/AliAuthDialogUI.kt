@@ -21,7 +21,6 @@ class AliAuthDialogUI: BaseUI<AliAuthDialogPresenter>(),
 
         cancelBtn.tapWith("淘宝授权页返回按钮", ActionSource.ALI_AUTH_DIALOG_BACK) {
             presenter.linkMain()
-            closeDirectly()
         }
 
         agreeBtn.tapWith("淘宝授权页同意按钮", ActionSource.ALI_AUTH_DIALOG_AGREE) {

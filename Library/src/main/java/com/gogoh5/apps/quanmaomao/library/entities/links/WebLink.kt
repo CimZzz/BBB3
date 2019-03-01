@@ -12,6 +12,7 @@ class WebLink(
 ): BaseLink() {
     companion object {
         const val PAGE_ORDER = 0
+        const val PAGE_CART = 1
     }
 
     override fun doPerform(context: Context) {

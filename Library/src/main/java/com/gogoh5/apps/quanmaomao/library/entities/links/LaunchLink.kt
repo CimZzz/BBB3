@@ -4,15 +4,11 @@ import android.content.Context
 import android.content.Intent
 import com.gogoh5.apps.quanmaomao.library.base.BaseLink
 
-class MainLink(
-    val transferPage: Int? = null,
-    val isClose: Boolean? = null
-): BaseLink() {
+class LaunchLink: BaseLink() {
     override fun doPerform(context: Context) {
-        val intent = Intent(context, Class.forName("com.gogoh5.apps.quanmaomao.android.ui.main.MainUI"))
+        val intent = Intent(context, Class.forName("com.gogoh5.apps.quanmaomao.android.ui.launch.LaunchUI"))
         processIntent(intent, context)
-        if(isClose == true)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         context.startActivity(intent)
     }
 }
